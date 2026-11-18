@@ -254,7 +254,7 @@ const skillGroups = [
   { name: 'Excel & data prep', items: ['Excel', 'Power Query', 'Pivot tables', 'Data transformation', 'Dataset preparation'] },
   { name: 'Business intelligence', items: ['Power BI', 'DAX', 'Dashboards', 'Data visualization'] },
   { name: 'Python & data', items: ['Python', 'Data processing', 'Scripting'] },
-  { name: 'Computer vision', items: ['YOLO', 'Roboflow', 'Image annotation', 'Object detection', 'Object tracking', 'Masking & counting'] },
+  { name: 'Computer vision', items: ['YOLO', 'Roboflow', 'Image annotation', 'Object detection', 'Object tracking', 'Masking & counting', 'Model training', 'Model testing'] },
   { name: 'Tools & workflow', items: ['Git', 'GitHub', 'pgAdmin', 'VS Code'] },
 ]
 

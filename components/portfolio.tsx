@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import IplDashboardPreview from '@/components/ipl-dashboard-preview'
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowDown,
@@ -10,7 +11,6 @@ import {
   Check,
   Database,
   Eye,
-  MapPin,
   Menu,
   Phone,
   X,
@@ -75,7 +75,7 @@ function Hero() {
   return (
     <section className="hero page-wrap" id="home">
       <div className="hero-copy">
-        <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT <span className="eyebrow-divider">/</span> PUNE, INDIA</p>
+        <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT</p>
         <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
         <h2 className="hero-role">Data Analytics <span>·</span> AI &amp; Computer Vision</h2>
         <p className="hero-intro">
@@ -85,11 +85,6 @@ function Hero() {
           <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>
           <a className="button button-outline" href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
         </div>
-        <div className="hero-facts" aria-label="A few quick facts">
-          <div><strong>02</strong><span>FOCUS AREAS</span></div>
-          <div><strong>PUNE</strong><span>BASED IN INDIA</span></div>
-          <div><strong>DATA</strong><span>INTO DECISIONS</span></div>
-        </div>
         <div className="hero-skills" aria-label="Tools I work with">
           {['SQL', 'Power BI', 'Python', 'Excel', 'YOLO'].map((tool) => <span key={tool}>{tool}</span>)}
         </div>
@@ -98,11 +93,11 @@ function Hero() {
         <article className="profile-card">
           <div className="profile-summary">
             <div className="profile-monogram" aria-hidden="true">UZ</div>
-            <div className="profile-copy"><h2>Udaykumar Zaware</h2><p>Computer Engineering Student</p><span><MapPin aria-hidden="true" /> Pune, India</span></div>
+            <div className="profile-copy"><h2>Udaykumar Zaware</h2><p>Computer Engineering Student</p></div>
           </div>
           <div className="code-card" aria-label="A snapshot of my work">
             <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
-            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  focus: [<span className="code-string">&quot;Analytics&quot;</span>, <span className="code-string">&quot;AI &amp; Computer Vision&quot;</span>],<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>],<br />  location: <span className="code-string">&quot;Pune, India&quot;</span><br />{'}'}</code></pre>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>]<br />{'}'}</code></pre>
           </div>
           <div className="profile-links">
             <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
@@ -183,23 +178,27 @@ const projects = [
   },
 ]
 
-const projectVisuals: Record<string, { src: string; label?: string; alt?: string }> = {
+const projectVisuals: Record<string, { src: string; label: string }> = {
   sales: { src: '/project-images/sales-analytics.png', label: 'EXCEL · SALES ANALYTICS' },
   database: { src: '/project-images/bookstore-sql.png', label: 'POSTGRESQL · BOOKSTORE' },
-  ipl: {
-    src: '/project-images/ipl-dashboard.png',
-    alt: 'Power BI IPL dashboard showing team wins, top wicket takers, season filters, match and run totals, top scorers, matches per season, and toss decisions.',
-  },
   vision: { src: '/project-images/vision-fitness.png', label: 'POSE TRACKING · YOLO-POSE' },
 }
 
 function ProjectArtwork({ type }: { type: string }) {
+  if (type === 'ipl') {
+    return (
+      <div className="project-art project-art-ipl">
+        <IplDashboardPreview />
+      </div>
+    )
+  }
+
   const visual = projectVisuals[type]
 
   return (
-    <div className={`project-art project-art-${type}`}>
-      <Image src={visual.src} alt={visual.alt ?? ''} fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
-      {visual.label && <span className="project-art-label" aria-hidden="true">{visual.label}</span>}
+    <div className="project-art" aria-hidden="true">
+      <Image src={visual.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
+      <span className="project-art-label">{visual.label}</span>
     </div>
   )
 }

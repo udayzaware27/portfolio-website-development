@@ -140,10 +140,38 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-card:hover .project-photo { transform: scale(1.04); }
 .project-art::after { position: absolute; z-index: 1; inset: 48% 0 0; background: linear-gradient(180deg, transparent, #090b10c9); content: ''; pointer-events: none; }
 .project-art-label { position: absolute; z-index: 2; bottom: 18px; left: 18px; padding: 8px 10px; border-left: 2px solid var(--accent); background: #090b10c9; color: var(--foreground); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; letter-spacing: .12em; }
-.project-art.project-art-ipl { min-height: 0; aspect-ratio: 1305 / 730; border-color: #d5dbe4; background: #f3f5f8; }
+.project-art.project-art-ipl { min-height: 0; aspect-ratio: 1305 / 730; padding: 7px; border-color: #d5dbe4; background: #f3f5f8; }
 .project-art-ipl::after { display: none; }
-.project-art-ipl .project-photo { object-fit: contain; padding: 8px; }
-.project-card:hover .project-art-ipl .project-photo { transform: none; }
+.ipl-dashboard-preview { display: grid; width: 100%; height: 100%; grid-template-rows: 10px minmax(0, 1.15fr) 28px minmax(0, .95fr); gap: 4px; padding: 2px; color: #1b2a3d; font-family: Arial, sans-serif; }
+.ipl-dashboard-topbar { display: flex; align-items: center; justify-content: space-between; color: #526176; font-size: 5px; font-weight: 700; letter-spacing: .1em; }
+.ipl-dashboard-brand { display: flex; align-items: center; gap: 4px; }
+.ipl-dashboard-brand i { width: 6px; height: 6px; border-radius: 2px; background: #168ef2; }
+.ipl-dashboard-grid { display: grid; min-height: 0; grid-template-columns: 1.15fr 1.08fr .8fr; gap: 4px; }
+.ipl-panel { min-width: 0; min-height: 0; overflow: hidden; padding: 4px 5px; border: 1px solid #dfe5ec; background: #fff; }
+.ipl-panel h3 { overflow: hidden; margin: 0 0 4px; color: #202b39; font-size: 5.7px; font-weight: 700; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+.ipl-column-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 3px 0; border-bottom: 1px solid #cdd6e0; background: linear-gradient(to top, transparent 24%, #e7ecf2 25%, transparent 26%, transparent 49%, #e7ecf2 50%, transparent 51%, transparent 74%, #e7ecf2 75%, transparent 76%); }
+.ipl-column-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #168ef2; }
+.ipl-column-chart i:nth-child(4n + 1) { background: #ff8a70; }
+.ipl-panel-axis { display: block; margin-top: 2px; color: #788497; font-size: 4px; letter-spacing: .08em; }
+.ipl-leader-list { display: grid; gap: 4px; }
+.ipl-leader-row { display: grid; min-width: 0; grid-template-columns: 35px 1fr; align-items: center; gap: 4px; color: #4e5b6d; font-size: 4.7px; }
+.ipl-leader-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ipl-leader-row > i { display: block; height: 4px; background: #edf1f5; }
+.ipl-leader-row > i > b { display: block; height: 100%; background: #168ef2; }
+.ipl-season-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
+.ipl-season-filters span { display: grid; min-height: 9px; place-items: center; border: 1px solid #162a3f; background: #afd5f8; color: #1c2d42; font-size: 4.2px; white-space: nowrap; }
+.ipl-dashboard-kpis { display: grid; min-height: 0; grid-template-columns: 1fr 1fr 1.28fr 1fr 1fr; gap: 4px; }
+.ipl-dashboard-kpis > div { display: flex; min-width: 0; flex-direction: column; align-items: center; justify-content: center; gap: 2px; overflow: hidden; border-radius: 3px; background: #b8dcfc; color: #1c2d42; text-align: center; }
+.ipl-dashboard-kpis strong { font-size: 8px; line-height: 1; }
+.ipl-dashboard-kpis span { overflow: hidden; max-width: 100%; font-size: 4.3px; text-overflow: ellipsis; white-space: nowrap; }
+.ipl-dashboard-kpis .ipl-kpi-winner { background: #70baf6; }
+.ipl-dashboard-kpis .ipl-kpi-winner strong { font-size: 6.5px; }
+.ipl-dashboard-bottom { grid-template-columns: 1.12fr 1fr .78fr; }
+.ipl-season-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 2px 0; border-bottom: 1px solid #cdd6e0; background: linear-gradient(to top, transparent 24%, #e7ecf2 25%, transparent 26%, transparent 49%, #e7ecf2 50%, transparent 51%, transparent 74%, #e7ecf2 75%, transparent 76%); }
+.ipl-season-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #168ef2; }
+.ipl-toss-content { display: flex; height: calc(100% - 12px); align-items: center; justify-content: center; gap: 5px; }
+.ipl-toss-donut { width: clamp(18px, 4vw, 30px); flex: 0 0 auto; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(#182ba5 0 64%, #168ef2 64% 100%); }
+.ipl-toss-legend { display: grid; gap: 3px; color: #5f6c7d; font-size: 4.5px; }
 .project-copy { padding-block: 8px; }
 .project-meta { justify-content: space-between; color: var(--muted); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; }
 .project-meta span:first-child { color: var(--accent-deep); }
@@ -368,12 +396,6 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 .button-primary:hover { background: #ff9078; box-shadow: 0 10px 30px #ff765d32; }
 .button-outline { border-color: #28303d; border-radius: 999px; color: var(--foreground); }
 .button-outline:hover { border-color: var(--accent); background: #ff765d12; }
-.hero-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 28px; padding-block: 16px; border-block: 1px solid var(--line); }
-.hero-facts > div { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 5px; padding: 0 14px; }
-.hero-facts > div:first-child { padding-left: 0; }
-.hero-facts > div + div { border-left: 1px solid var(--line); }
-.hero-facts strong { color: var(--accent); font-size: 18px; font-weight: 700; letter-spacing: -.03em; }
-.hero-facts span { color: #a1a9b7; font-size: 8px; font-weight: 700; letter-spacing: .11em; }
 .hero-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .hero-skills span { padding: 7px 11px; border: 1px solid #ff765d27; border-radius: 999px; color: #a1a9b7; font-size: 10px; }
 .hero-visual-wrap { width: 100%; max-width: 680px; justify-self: end; }
@@ -382,8 +404,6 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 .profile-monogram { display: grid; width: 66px; height: 66px; flex: 0 0 auto; place-items: center; border: 2px solid #ff765d; border-radius: 14px; background: linear-gradient(145deg, #171b23, #090b10); color: #f3f4f6; font-size: 22px; font-weight: 780; letter-spacing: -.08em; }
 .profile-copy h2 { margin: 0 0 5px; color: var(--foreground); font-size: 18px; font-weight: 650; letter-spacing: -.03em; }
 .profile-copy p { margin: 0 0 7px; color: var(--accent-deep); font-size: 12px; }
-.profile-copy > span { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 11px; }
-.profile-copy > span svg { width: 13px; height: 13px; color: var(--accent); }
 .code-card { overflow: hidden; border: 1px solid #3c424d40; border-radius: 11px; background: #0d1118; box-shadow: 0 10px 36px #0004; }
 .code-titlebar { display: flex; height: 39px; align-items: center; gap: 11px; padding-inline: 13px; border-bottom: 1px solid #ff765d18; background: #151923; color: #a1a9b7; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 10px; }
 .window-dots { display: flex; gap: 5px; }
@@ -421,7 +441,6 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 @media (max-width: 420px) {
   .hero { padding-top: 42px; }.hero .eyebrow { gap: 7px; padding: 9px 11px; font-size: 7px; }
   .hero h1 { font-size: clamp(52px, 13vw, 65px); }
-  .hero-facts > div { padding-inline: 8px; }.hero-facts strong { font-size: 16px; }.hero-facts span { font-size: 7px; letter-spacing: .07em; }
   .hero-skills { gap: 6px; }.hero-skills span { padding: 6px 9px; font-size: 9px; }
   .code-card pre { padding: 15px 11px 17px; font-size: 9px; }
   .code-titlebar { padding-inline: 10px; }.profile-links { gap: 7px; }

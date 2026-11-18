@@ -64,6 +64,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .eyebrow-divider { color: var(--accent); }
 .hero h1 { margin: 29px 0 20px; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(66px, 8.2vw, 108px); font-weight: 400; letter-spacing: -.085em; line-height: .94; }
 .hero h1 em, .section-heading h2 em, .contact h2 em { color: var(--accent); font-weight: 400; }
+.hero h1 em { font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif; font-size: .9em; font-style: normal; font-weight: 600; letter-spacing: -.055em; }
 .hero-intro { max-width: 480px; margin: 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
 .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 13px 25px; margin-top: 29px; }
 .button { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 13px; padding: 0 17px; border: 1px solid transparent; font-size: 11px; font-weight: 650; transition: transform .24s ease, background .24s ease, color .24s ease, box-shadow .24s ease; }

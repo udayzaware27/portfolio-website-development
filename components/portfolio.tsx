@@ -288,7 +288,7 @@ function Education() {
           <article className="education-item reveal-item"><span className="education-years">2023 — 2027</span><div><span className="education-type">BACHELOR OF ENGINEERING</span><h3>Computer Engineering</h3><p>Modern Education Society&apos;s Wadia College of Engineering, Pune</p><small>Savitribai Phule Pune University</small></div></article>
           <article className="education-item reveal-item"><span className="education-years">2023</span><div><span className="education-type">HIGHER SECONDARY · SCIENCE (PCM)</span><h3>Kondiram Sadashiv Kshirsagar Junior College (Arts)</h3><p>Bhigwan, Maharashtra</p></div></article>
         </div>
-        <div className="cert-list reveal-item"><div className="cert-heading"><span>COMPLETED COURSES</span><span>04</span></div>{certifications.map((item, index) => <div className="cert-item" key={item}><span>0{index + 1}</span><p>{item}</p><Check aria-hidden="true" /></div>)}<small>ScholarHat · 2025</small></div>
+        <div className="cert-list reveal-item"><div className="cert-heading"><span>COMPLETED COURSES</span><span>04</span></div>{certifications.map((item, index) => <div className="cert-item" key={item}><span>0{index + 1}</span><p>{item}</p><Check aria-hidden="true" /></div>)}</div>
       </div>
     </section>
   )

@@ -80,7 +80,7 @@ function Hero() {
         <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
         <h2 className="hero-role">Data Analytics <span>·</span> AI-Computer Vision</h2>
         <p className="hero-intro">
-          I turn raw data into useful insights, build clear dashboards, and develop hands-on experience with computer vision.
+          I turn raw data into actionable insights and build clear dashboards that reveal patterns. I also explore computer vision through hands-on projects in detection, tracking, and image analysis.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>

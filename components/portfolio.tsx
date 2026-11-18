@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import IplDashboardPreview from '@/components/ipl-dashboard-preview'
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import { useEffect, useState, type CSSProperties, type FormEvent, type ReactNode } from 'react'
 import {
   ArrowDown,
   ArrowDownRight,
@@ -11,9 +11,11 @@ import {
   Check,
   Database,
   Eye,
+  Mail,
   MapPin,
   Menu,
   Phone,
+  Send,
   X,
 } from 'lucide-react'
 
@@ -299,11 +301,83 @@ function Education() {
 }
 
 function Contact() {
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const formData = new FormData(event.currentTarget)
+    const name = String(formData.get('name') ?? '').trim()
+    const email = String(formData.get('email') ?? '').trim()
+    const phone = String(formData.get('phone') ?? '').trim()
+    const message = String(formData.get('message') ?? '').trim()
+    const subject = `Portfolio inquiry from ${name}`
+    const body = `Name: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\n\n${message}`
+
+    window.location.href = `${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+  }
+
   return (
     <section className="contact section-space" id="contact">
       <div className="page-wrap contact-inner">
-        <div className="contact-copy reveal-item"><p className="section-label"><span>06</span><i /> SAY HELLO</p><h2>Have a good<br />question? <em>Let&apos;s talk.</em></h2><p>I&apos;m open to conversations about data, practical AI, internships, and projects worth learning from.</p><a className="button button-primary" href={profile.email}>Write me an email <ArrowUpRight aria-hidden="true" /></a></div>
-        <div className="contact-links reveal-item"><a href="tel:+918446511746"><span>PHONE</span><b>+91 84465 11746</b><Phone aria-hidden="true" /></a><a href={profile.email}><span>EMAIL</span><b>udayzaware09@gmail.com</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LINKEDIN</span><b>Connect professionally</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.github} target="_blank" rel="noreferrer"><span>GITHUB</span><b>See what I&apos;m building</b><ArrowUpRight aria-hidden="true" /></a><div className="contact-location"><span className="status-dot" /> PUNE, MAHARASHTRA, INDIA</div></div>
+        <div className="contact-summary">
+          <div className="contact-copy reveal-item">
+            <p className="section-label"><span>06</span><i /> SAY HELLO</p>
+            <h2>Have a good<br />question? <em>Let&apos;s talk.</em></h2>
+            <p>I&apos;m open to conversations about data, practical AI, internships, and projects worth learning from.</p>
+          </div>
+
+          <div className="contact-methods reveal-item" role="group" aria-label="Contact details">
+            <a className="contact-method" href={profile.email}>
+              <span className="contact-method-icon"><Mail aria-hidden="true" /></span>
+              <span className="contact-method-copy"><b>Email</b><small>udayzaware09@gmail.com</small></span>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+            <a className="contact-method" href="tel:+918446511746">
+              <span className="contact-method-icon"><Phone aria-hidden="true" /></span>
+              <span className="contact-method-copy"><b>Phone</b><small>+91 84465 11746</small></span>
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </div>
+
+          <aside className="contact-collaboration reveal-item" aria-labelledby="contact-collaboration-title">
+            <span className="contact-collaboration-icon"><Send aria-hidden="true" /></span>
+            <h3 id="contact-collaboration-title">Let&apos;s collaborate</h3>
+            <p>Have an idea, role, or project in mind? Share a few details and we can explore how to work together.</p>
+            <ul>
+              <li>Data &amp; analytics</li>
+              <li>Practical AI / computer vision</li>
+              <li>Internships &amp; projects</li>
+            </ul>
+            <nav className="contact-social-links" aria-label="Social profiles">
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <ArrowUpRight aria-hidden="true" /></a>
+              <a href={profile.github} target="_blank" rel="noreferrer">GitHub <ArrowUpRight aria-hidden="true" /></a>
+            </nav>
+          </aside>
+        </div>
+
+        <form className="contact-form reveal-item" onSubmit={handleSubmit}>
+          <div className="contact-form-heading">
+            <h3>Send a message</h3>
+            <p>Share your idea, timeline, and goals.</p>
+          </div>
+          <div className="contact-form-fields">
+            <label className="contact-field" htmlFor="contact-name">Your name
+              <input id="contact-name" name="name" type="text" autoComplete="name" placeholder="Your name" maxLength={100} required />
+            </label>
+            <label className="contact-field" htmlFor="contact-email">Your email
+              <input id="contact-email" name="email" type="email" autoComplete="email" placeholder="you@example.com" maxLength={254} required />
+            </label>
+            <label className="contact-field contact-field-full" htmlFor="contact-phone">
+              <span className="contact-field-label">Your number <small>(optional)</small></span>
+              <input id="contact-phone" name="phone" type="tel" autoComplete="tel" placeholder="Your number" maxLength={40} />
+            </label>
+            <label className="contact-field contact-field-full" htmlFor="contact-message">Your message
+              <textarea id="contact-message" name="message" rows={4} placeholder="Tell me a little about what you have in mind..." maxLength={5000} required />
+            </label>
+          </div>
+          <div className="contact-form-actions">
+            <button className="button button-primary" type="submit">Send message <Send aria-hidden="true" /></button>
+            <p>This opens your email app with the message ready to send.</p>
+          </div>
+        </form>
       </div>
     </section>
   )

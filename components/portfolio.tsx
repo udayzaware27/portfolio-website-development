@@ -6,7 +6,6 @@ import {
   ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
-  Braces,
   Check,
   Database,
   Eye,
@@ -76,16 +75,16 @@ function Hero() {
       <div className="hero-copy">
         <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT <span className="eyebrow-divider">/</span> PUNE, INDIA</p>
         <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
-        <h2 className="hero-role">Data Analytics <span>·</span> Applied AI</h2>
+        <h2 className="hero-role">Data Analytics <span>·</span> AI &amp; Computer Vision</h2>
         <p className="hero-intro">
-          I turn raw information into useful insights, build thoughtful dashboards, and explore practical AI — one project at a time.
+          I turn raw information into useful insights, build thoughtful dashboards, and explore AI through computer vision projects.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>
           <a className="button button-outline" href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
         </div>
         <div className="hero-facts" aria-label="A few quick facts">
-          <div><strong>03</strong><span>FOCUS AREAS</span></div>
+          <div><strong>02</strong><span>FOCUS AREAS</span></div>
           <div><strong>PUNE</strong><span>BASED IN INDIA</span></div>
           <div><strong>DATA</strong><span>THEN DECISIONS</span></div>
         </div>
@@ -101,7 +100,7 @@ function Hero() {
           </div>
           <div className="code-card" aria-label="A snapshot of my work">
             <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
-            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  focus: [<span className="code-string">&quot;Analytics&quot;</span>, <span className="code-string">&quot;Applied AI&quot;</span>],<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>],<br />  location: <span className="code-string">&quot;Pune, India&quot;</span><br />{'}'}</code></pre>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  focus: [<span className="code-string">&quot;Analytics&quot;</span>, <span className="code-string">&quot;AI &amp; Computer Vision&quot;</span>],<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>],<br />  location: <span className="code-string">&quot;Pune, India&quot;</span><br />{'}'}</code></pre>
           </div>
           <div className="profile-links">
             <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
@@ -126,8 +125,7 @@ function SectionHeading({ index, label, title, detail }: { index: string; label:
 
 const focusAreas = [
   { icon: <Database aria-hidden="true" />, title: 'Analytics & BI', text: 'Clean, query, and shape data into dashboards and clear business takeaways.' },
-  { icon: <Braces aria-hidden="true" />, title: 'Applied AI', text: 'Learn by building: prepare data, test models, and understand how the pieces fit.' },
-  { icon: <Eye aria-hidden="true" />, title: 'Computer vision', text: 'Explore image annotation, object detection, tracking, and counting workflows.' },
+  { icon: <Eye aria-hidden="true" />, title: 'AI & Computer Vision', text: 'Explore image annotation, object detection, tracking, and counting with practical AI workflows.' },
 ]
 
 function About() {

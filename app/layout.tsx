@@ -8,12 +8,12 @@ export const metadata: Metadata = {
   description: 'Udaykumar Zaware is a Computer Engineering student in Pune exploring data analytics, business intelligence, and practical computer vision.',
   openGraph: {
     title: 'Udaykumar Zaware — Data, AI & Computer Vision',
-    description: 'A portfolio of analytics, business intelligence, and applied AI projects by Udaykumar Zaware.',
+    description: 'A portfolio of analytics, business intelligence, AI, and computer vision projects by Udaykumar Zaware.',
     url: 'https://udayzaware.in',
     siteName: 'Udaykumar Zaware',
     type: 'website',
   },
-  twitter: { card: 'summary_large_image', title: 'Udaykumar Zaware — Data, AI & Computer Vision', description: 'Analytics, business intelligence, and applied AI projects.' },
+  twitter: { card: 'summary_large_image', title: 'Udaykumar Zaware — Data, AI & Computer Vision', description: 'Analytics, business intelligence, AI, and computer vision projects.' },
   icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
 }
 

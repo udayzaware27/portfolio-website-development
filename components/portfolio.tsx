@@ -55,7 +55,7 @@ function Header() {
       </nav>
       <a className="brand" href="#home" aria-label="Udaykumar Zaware, home">
         <span className="brand-mark">UZ</span>
-        <span className="brand-name">DATA · ANALYTICS · ENGINEERING</span>
+        <span className="brand-name">DATA · COMPUTER VISION · ENGINEERING</span>
       </a>
       <button
         className="menu-toggle"

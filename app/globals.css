@@ -464,6 +464,16 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 @media (prefers-reduced-motion: no-preference) {
   .section-heading.reveal-ready { transform: translate3d(-16px, 18px, 0) scale(.99); }
   .section-heading.reveal-ready.is-visible { transform: translate3d(0, 0, 0) scale(1); }
+  .experience-details span { opacity: 0; transform: translateX(-10px); }
+  .experience-card.is-visible .experience-details span { animation: detail-slide-in .48s cubic-bezier(.2,.8,.2,1) forwards; }
+  .experience-card.is-visible .experience-details span:nth-child(2) { animation-delay: .08s; }
+  .experience-card.is-visible .experience-details span:nth-child(3) { animation-delay: .16s; }
+  .experience-card.is-visible .experience-details span:nth-child(4) { animation-delay: .24s; }
+  .cert-item { opacity: 0; transform: translateY(8px); }
+  .cert-list.is-visible .cert-item { animation: cert-rise .45s cubic-bezier(.2,.8,.2,1) forwards; }
+  .cert-list.is-visible .cert-item:nth-child(3) { animation-delay: .06s; }
+  .cert-list.is-visible .cert-item:nth-child(4) { animation-delay: .12s; }
+  .cert-list.is-visible .cert-item:nth-child(5) { animation-delay: .18s; }
   .code-card { position: relative; }
   .project-art::before { position: absolute; z-index: 2; inset: -10% auto -10% 0; width: 34%; background: linear-gradient(90deg, transparent, #ff90782e, transparent); content: ""; opacity: 0; transform: translateX(-140%) skewX(-16deg); pointer-events: none; }
   .project-card.is-visible .project-art::before { animation: project-sweep 1s .16s ease-out both; }
@@ -495,3 +505,5 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 }
 @keyframes chart-rise { from { transform: scaleY(.06); } to { transform: scaleY(1); } }
 @keyframes metric-fill { from { transform: scaleX(.04); } to { transform: scaleX(1); } }
+@keyframes detail-slide-in { to { opacity: 1; transform: translateX(0); } }
+@keyframes cert-rise { to { opacity: 1; transform: translateY(0); } }

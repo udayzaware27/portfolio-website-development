@@ -1,9 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, Code2, Database, Mail, Menu, ScanLine, Sparkles, UserRound, X } from 'lucide-react'
 
-const profileImage = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-05-25%20at%2010.05.41-hVO2dCzlDw83MUfJZlYN7hw7pyo0jb.jpeg'
 const links = { github: 'https://github.com/udayzaware27', linkedin: 'https://www.linkedin.com/in/udaykumar-zaware27', email: 'mailto:udayzaware09@gmail.com' }
 
 function Navigation() {
@@ -13,7 +12,7 @@ function Navigation() {
 }
 
 function Hero() {
-  return <section className="hero section-wrap" id="home"><div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot"/> HELLO, I&apos;M UDAYKUMAR <span className="eyebrow-line"/> PUNE, INDIA</div><h1>Turning data<br/>into <em>insights.</em><br/>Building intelligence<br/>with <em>AI.</em></h1><p className="hero-description">Computer Engineering student exploring the intersection of Data Analytics, Artificial Intelligence, and Computer Vision.</p><div className="hero-specialties"><span>DATA ANALYTICS</span><b>／</b><span>ARTIFICIAL INTELLIGENCE</span><b>／</b><span>COMPUTER VISION</span></div><div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight size={17}/></a><a className="button button-quiet" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">Download resume <ArrowDown size={15}/></a></div><div className="hero-socials"><a href={links.github} target="_blank" rel="noreferrer"><Code2 size={16}/> GitHub <ArrowUpRight size={12}/></a><a href={links.linkedin} target="_blank" rel="noreferrer"><UserRound size={16}/> LinkedIn <ArrowUpRight size={12}/></a><a href={links.email}><Mail size={16}/> Email <ArrowUpRight size={12}/></a></div></div><div className="hero-visual"><div className="image-frame"><img src={profileImage} alt="Udaykumar Zaware in a black blazer and white shirt"/><span className="frame-corner corner-tl"/><span className="frame-corner corner-br"/><div className="image-index">FIG. 01 <span>—</span> PROFILE</div></div><div className="visual-note note-top"><span className="note-icon"><ScanLine size={15}/></span><span>COMPUTER VISION<br/><b>IN PROGRESS</b></span></div><div className="visual-note note-bottom"><span className="live-dot"/> OPEN TO OPPORTUNITIES <ArrowUpRight size={13}/></div><div className="hero-coordinate">18°31&apos; N<br/>73°51&apos; E</div><div className="hero-stamp">DATA <span>×</span> INTELLIGENCE <span>×</span> VISION</div></div><a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown size={14}/></a><div className="hero-count">01 <span>/ 06</span></div></section>
+  return <section className="hero section-wrap" id="home"><div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot"/> HELLO, I&apos;M UDAYKUMAR <span className="eyebrow-line"/> PUNE, INDIA</div><h1>Turning data<br/>into <em>insights.</em><br/>Building intelligence<br/>with <em>AI.</em></h1><p className="hero-description">Computer Engineering student exploring the intersection of Data Analytics, Artificial Intelligence, and Computer Vision.</p><div className="hero-specialties"><span>DATA ANALYTICS</span><b>／</b><span>ARTIFICIAL INTELLIGENCE</span><b>／</b><span>COMPUTER VISION</span></div><div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight size={17}/></a><a className="button button-quiet" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">Download resume <ArrowDown size={15}/></a></div><div className="hero-socials"><a href={links.github} target="_blank" rel="noreferrer"><Code2 size={16}/> GitHub <ArrowUpRight size={12}/></a><a href={links.linkedin} target="_blank" rel="noreferrer"><UserRound size={16}/> LinkedIn <ArrowUpRight size={12}/></a><a href={links.email}><Mail size={16}/> Email <ArrowUpRight size={12}/></a></div></div><div className="hero-visual"><div className="orbit-stage" role="img" aria-label="Animated data visualization representing analytics, artificial intelligence, and computer vision"><div className="orbit-halo"/><div className="orbit orbit-one"/><div className="orbit orbit-two"/><div className="orbit orbit-three"/><div className="orbit orbit-four"/><div className="orbit-core"><span>UZ</span><small>DATA / AI</small></div><i className="orbit-node node-one"/><i className="orbit-node node-two"/><i className="orbit-node node-three"/><i className="orbit-node node-four"/><div className="orbit-readout readout-top"><span>MODEL STATUS</span><b><i/> LEARNING</b></div><div className="orbit-readout readout-side"><span>FEATURE SPACE</span><b>3 AXES <span>↗</span></b></div><div className="orbit-coordinate">18°31&apos; N&nbsp;&nbsp; 73°51&apos; E</div><div className="orbit-legend"><span><i/> ANALYTICS</span><span><i/> INTELLIGENCE</span><span><i/> VISION</span></div><div className="orbit-scanline"/></div><div className="visual-note note-top"><span className="note-icon"><ScanLine size={15}/></span><span>COMPUTER VISION<br/><b>IN PROGRESS</b></span></div><div className="visual-note note-bottom"><span className="live-dot"/> OPEN TO OPPORTUNITIES <ArrowUpRight size={13}/></div><div className="hero-stamp">DATA <span>×</span> INTELLIGENCE <span>×</span> VISION</div></div><a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown size={14}/></a><div className="hero-count">01 <span>/ 06</span></div></section>
 }
 
 function SectionHeading({ index, kicker, title, children }: { index: string; kicker: string; title: React.ReactNode; children?: React.ReactNode }) { return <div className="section-heading"><div className="section-kicker"><span>{index}</span><span className="kicker-rule"/>{kicker}</div><div className="section-title-row"><h2>{title}</h2>{children && <p>{children}</p>}</div></div> }
@@ -42,4 +41,24 @@ function Contact() { const [notice,setNotice]=useState(''); function submit(even
 
 function Footer() { return <footer className="site-footer"><div className="section-wrap footer-top"><a className="wordmark" href="#home"><span className="wordmark-mark">UZ</span><span>UDAYKUMAR <i>ZAWARE</i></span></a><p>Data Analytics <span>·</span> Artificial Intelligence <span>·</span> Computer Vision</p><a className="back-top" href="#home">BACK TO TOP <ArrowUpRight size={13}/></a></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Udaykumar Zaware</span><span>DESIGNED WITH INTENTION <i>·</i> BUILT TO KEEP LEARNING</span><div><a href={links.github} target="_blank" rel="noreferrer">GITHUB</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN</a><a href={links.email}>EMAIL</a></div></div></footer> }
 
-export default function Portfolio() { return <><Navigation/><main><Hero/><About/><Skills/><Experience/><Projects/><Vision/><Education/><Contact/></main><Footer/></> }
+export default function Portfolio() {
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>('.section-heading, .about-intro, .focus-item, .skill-group, .experience-card, .project-row, .vision-copy, .vision-board, .education-item, .certifications, .contact-details, .contact-form')
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (motionQuery.matches || !('IntersectionObserver' in window)) return
+
+    targets.forEach(target => target.classList.add('reveal-target'))
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.14, rootMargin: '0px 0px -36px 0px' })
+    targets.forEach(target => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
+
+  return <><Navigation/><main><Hero/><About/><Skills/><Experience/><Projects/><Vision/><Education/><Contact/></main><Footer/></>
+}

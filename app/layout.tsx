@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
 }
 
-export const viewport: Viewport = { themeColor: '#0b0d0f', colorScheme: 'dark' }
+export const viewport: Viewport = { themeColor: '#10110f', colorScheme: 'dark' }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return <html lang="en"><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>

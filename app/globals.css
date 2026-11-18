@@ -366,9 +366,8 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 
 :root { --muted: #c0c7d2; }
 @media (prefers-reduced-motion: no-preference) {
-  .hero-copy > *, .hero-visual-wrap, .site-header { animation-name: hero-rise; }
+  .hero-copy > *, .hero-visual-wrap, .site-header { animation-name: hero-enter; }
 }
-@keyframes hero-rise { from { transform: translateY(14px); } to { transform: translateY(0); } }
 
   body { background-image: radial-gradient(ellipse at 78% 38%, #ff765d16, transparent 38%), radial-gradient(ellipse at 8% 88%, #ff765d12, transparent 32%); }
 .site-header { display: grid; grid-template-columns: 1fr auto 1fr; height: 86px; padding-inline: max(5%, calc((100vw - 1320px) / 2)); border-color: #28303d; background: #090b10df; }

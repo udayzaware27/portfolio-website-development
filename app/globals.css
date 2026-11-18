@@ -406,10 +406,12 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 .button-primary:hover { background: #ff9078; box-shadow: 0 10px 30px #ff765d32; }
 .button-outline { border-color: #28303d; border-radius: 999px; color: var(--foreground); }
 .button-outline:hover { border-color: var(--accent); background: #ff765d12; }
-.hero-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 9px; margin-top: 28px; }
-.hero-facts > div { display: flex; min-height: 70px; flex-direction: column; justify-content: center; gap: 6px; padding: 10px 12px; border: 1px solid #ff765d20; border-radius: 9px; background: linear-gradient(140deg, #ff765d0c, #ffffff02); }
-.hero-facts strong { color: var(--accent-deep); font-size: 20px; font-weight: 700; letter-spacing: -.03em; }
-.hero-facts span { color: #a1a9b7; font-size: 8px; font-weight: 700; letter-spacing: .13em; }
+.hero-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 28px; padding-block: 16px; border-block: 1px solid var(--line); }
+.hero-facts > div { display: flex; min-width: 0; flex-direction: column; justify-content: center; gap: 5px; padding: 0 14px; }
+.hero-facts > div:first-child { padding-left: 0; }
+.hero-facts > div + div { border-left: 1px solid var(--line); }
+.hero-facts strong { color: var(--accent); font-size: 18px; font-weight: 700; letter-spacing: -.03em; }
+.hero-facts span { color: #a1a9b7; font-size: 8px; font-weight: 700; letter-spacing: .11em; }
 .hero-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .hero-skills span { padding: 7px 11px; border: 1px solid #ff765d27; border-radius: 999px; color: #a1a9b7; font-size: 10px; }
 .hero-visual-wrap { width: 100%; max-width: 680px; justify-self: end; }
@@ -457,7 +459,7 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 @media (max-width: 420px) {
   .hero { padding-top: 42px; }.hero .eyebrow { gap: 7px; padding: 9px 11px; font-size: 7px; }
   .hero h1 { font-size: clamp(52px, 13vw, 65px); }
-  .hero-facts { gap: 6px; }.hero-facts > div { min-height: 64px; padding: 8px; }.hero-facts strong { font-size: 16px; }.hero-facts span { font-size: 7px; letter-spacing: .08em; }
+  .hero-facts > div { padding-inline: 8px; }.hero-facts strong { font-size: 16px; }.hero-facts span { font-size: 7px; letter-spacing: .07em; }
   .hero-skills { gap: 6px; }.hero-skills span { padding: 6px 9px; font-size: 9px; }
   .code-card pre { padding: 15px 11px 17px; font-size: 9px; }
   .code-titlebar { padding-inline: 10px; }.profile-links { gap: 7px; }

@@ -11,6 +11,7 @@ import {
   Eye,
   MapPin,
   Menu,
+  Phone,
   X,
 } from 'lucide-react'
 
@@ -86,7 +87,7 @@ function Hero() {
         <div className="hero-facts" aria-label="A few quick facts">
           <div><strong>02</strong><span>FOCUS AREAS</span></div>
           <div><strong>PUNE</strong><span>BASED IN INDIA</span></div>
-          <div><strong>DATA</strong><span>THEN DECISIONS</span></div>
+          <div><strong>DATA</strong><span>INTO DECISIONS</span></div>
         </div>
         <div className="hero-skills" aria-label="Tools I work with">
           {['SQL', 'Power BI', 'Python', 'Excel', 'YOLO'].map((tool) => <span key={tool}>{tool}</span>)}
@@ -284,7 +285,7 @@ function Contact() {
     <section className="contact section-space" id="contact">
       <div className="page-wrap contact-inner">
         <div className="contact-copy reveal-item"><p className="section-label"><span>06</span><i /> SAY HELLO</p><h2>Have a good<br />question? <em>Let&apos;s talk.</em></h2><p>I&apos;m open to conversations about data, practical AI, internships, and projects worth learning from.</p><a className="button button-primary" href={profile.email}>Write me an email <ArrowUpRight aria-hidden="true" /></a></div>
-        <div className="contact-links reveal-item"><a href={profile.email}><span>EMAIL</span><b>udayzaware09@gmail.com</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LINKEDIN</span><b>Connect professionally</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.github} target="_blank" rel="noreferrer"><span>GITHUB</span><b>See what I&apos;m building</b><ArrowUpRight aria-hidden="true" /></a><div className="contact-location"><span className="status-dot" /> PUNE, MAHARASHTRA, INDIA</div></div>
+        <div className="contact-links reveal-item"><a href="tel:+918446511746"><span>PHONE</span><b>+91 84465 11746</b><Phone aria-hidden="true" /></a><a href={profile.email}><span>EMAIL</span><b>udayzaware09@gmail.com</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LINKEDIN</span><b>Connect professionally</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.github} target="_blank" rel="noreferrer"><span>GITHUB</span><b>See what I&apos;m building</b><ArrowUpRight aria-hidden="true" /></a><div className="contact-location"><span className="status-dot" /> PUNE, MAHARASHTRA, INDIA</div></div>
       </div>
     </section>
   )

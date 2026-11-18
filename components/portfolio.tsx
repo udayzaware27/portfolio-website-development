@@ -251,7 +251,7 @@ function Experience() {
 
 const skillGroups = [
   { name: 'Data & SQL', items: ['SQL', 'PostgreSQL', 'Joins', 'Data cleaning'] },
-  { name: 'Excel & data prep', items: ['Excel', 'Power Query', 'Pivot tables', 'Data transformation', 'Dataset preparation'] },
+  { name: 'Excel & data prep', items: ['Excel', 'Formulas', 'Charts', 'Pivot tables', 'Pivot charts', 'Lookup functions', 'Power Query', 'Data transformation', 'Dataset preparation'] },
   { name: 'Business intelligence', items: ['Power BI', 'DAX', 'Dashboards', 'Data visualization'] },
   { name: 'Python & data', items: ['Python', 'Data processing', 'Scripting'] },
   { name: 'Computer vision', items: ['YOLO', 'Roboflow', 'Image annotation', 'Object detection', 'Object tracking', 'Masking & counting', 'Model training', 'Model testing'] },

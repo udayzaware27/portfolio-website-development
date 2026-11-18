@@ -276,7 +276,12 @@ function Skills() {
   )
 }
 
-const certifications = ['SQL (PostgreSQL) Mastery', 'Power Query Mastery', 'Advanced Excel Mastery', 'Git & GitHub — Master Version Control']
+const certifications = [
+  { title: 'SQL (PostgreSQL) Mastery', href: 'https://drive.google.com/file/d/123n1DNwMA-D2gfShnphz4WZlqI0t1tIo/view?usp=sharing' },
+  { title: 'Power Query Mastery', href: 'https://drive.google.com/file/d/15if48WbsRxsPVd8XZ95E_yPlnl-pX2iq/view?usp=sharing' },
+  { title: 'Advanced Excel Mastery', href: 'https://drive.google.com/file/d/1DAwGk9oHkqnLtqKSKM2747Xm1NoMwqfH/view?usp=sharing' },
+  { title: 'Git & GitHub — Master Version Control', href: 'https://drive.google.com/file/d/1UxwN2DOab_a6ibM-LaND76sWsqUTKYu8/view?usp=sharing' },
+]
 
 function Education() {
   return (
@@ -287,7 +292,7 @@ function Education() {
           <article className="education-item reveal-item"><span className="education-years">2023 — 2027</span><div><span className="education-type">BACHELOR OF ENGINEERING</span><h3>Computer Engineering</h3><p>Modern Education Society&apos;s Wadia College of Engineering, Pune</p><small>Savitribai Phule Pune University</small></div></article>
           <article className="education-item reveal-item"><span className="education-years">2023</span><div><span className="education-type">HIGHER SECONDARY · SCIENCE (PCM)</span><h3>Kondiram Sadashiv Kshirsagar Junior College (Arts)</h3><p>Bhigwan, Maharashtra</p></div></article>
         </div>
-        <div className="cert-list reveal-item"><div className="cert-heading"><span>COMPLETED COURSES</span><span>04</span></div>{certifications.map((item, index) => <div className="cert-item" key={item}><span>0{index + 1}</span><p>{item}</p><Check aria-hidden="true" /></div>)}</div>
+        <div className="cert-list reveal-item"><div className="cert-heading"><span>COMPLETED COURSES</span><span>04</span></div>{certifications.map((item, index) => <a className="cert-item" key={item.title} href={item.href} target="_blank" rel="noreferrer" aria-label={`View certificate: ${item.title}`}><span>0{index + 1}</span><p>{item.title}</p><ArrowUpRight aria-hidden="true" /></a>)}</div>
       </div>
     </section>
   )

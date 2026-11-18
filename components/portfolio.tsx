@@ -250,10 +250,12 @@ function Experience() {
 }
 
 const skillGroups = [
-  { name: 'Data analysis', items: ['SQL', 'PostgreSQL', 'Excel', 'Power Query', 'Data cleaning'] },
-  { name: 'Business intelligence', items: ['Power BI', 'DAX', 'Pivot tables', 'Dashboards', 'Data visualization'] },
-  { name: 'Computer vision', items: ['Python', 'YOLO', 'Roboflow', 'Image annotation', 'Object tracking'] },
-  { name: 'Tools & workflow', items: ['Git', 'GitHub', 'pgAdmin', 'VS Code', 'Dataset preparation'] },
+  { name: 'Data & SQL', items: ['SQL', 'PostgreSQL', 'Joins', 'Data cleaning'] },
+  { name: 'Excel & data prep', items: ['Excel', 'Power Query', 'Pivot tables', 'Data transformation', 'Dataset preparation'] },
+  { name: 'Business intelligence', items: ['Power BI', 'DAX', 'Dashboards', 'Data visualization'] },
+  { name: 'Python & data', items: ['Python', 'Data processing', 'Scripting'] },
+  { name: 'Computer vision', items: ['YOLO', 'Roboflow', 'Image annotation', 'Object detection', 'Object tracking', 'Masking & counting'] },
+  { name: 'Tools & workflow', items: ['Git', 'GitHub', 'pgAdmin', 'VS Code'] },
 ]
 
 function Skills() {
@@ -264,7 +266,7 @@ function Skills() {
         <div className="skill-grid">
           {skillGroups.map((group, index) => (
             <article className="skill-card reveal-item" key={group.name} style={{ '--stagger': `${index * 90}ms` } as CSSProperties}>
-              <span className="skill-index">0{index + 1} <i>—</i> 04</span>
+              <span className="skill-index">0{index + 1} <i>—</i> {String(skillGroups.length).padStart(2, '0')}</span>
               <h3>{group.name}</h3>
               <div className="tag-list">{group.items.map(item => <span key={item}>{item}</span>)}</div>
             </article>

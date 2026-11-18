@@ -202,7 +202,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 .skills { background: #22231f; color: var(--surface); }
 .skills .section-label { color: #c5c3b8; }.skills .section-label > span { color: var(--lime); }.skills .section-heading h2 em { color: var(--lime); }.skills .section-heading-row > p { color: #c3c2b8; }
-.skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid #ffffff34; border-left: 1px solid #ffffff34; }
+.skill-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid #ffffff34; border-left: 1px solid #ffffff34; }
 .skill-card { min-height: 200px; padding: 22px; border-right: 1px solid #ffffff34; border-bottom: 1px solid #ffffff34; transition: background .3s ease; }
 .skill-card:hover { background: #ffffff0a; }
 .skill-index { color: var(--lime); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; }.skill-index i { color: #ffffff6e; font-style: normal; }

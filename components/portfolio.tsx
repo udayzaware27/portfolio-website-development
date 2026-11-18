@@ -1,6 +1,5 @@
 'use client'
 
-import Image from 'next/image'
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowDown,
@@ -11,6 +10,7 @@ import {
   Check,
   Database,
   Eye,
+  MapPin,
   Menu,
   X,
 } from 'lucide-react'
@@ -20,8 +20,6 @@ const profile = {
   linkedin: 'https://www.linkedin.com/in/udaykumar-zaware27',
   email: 'mailto:udayzaware09@gmail.com',
 }
-
-const navigation = ['About', 'Projects', 'Experience', 'Skills', 'Education', 'Contact']
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -35,11 +33,27 @@ function Header() {
     return () => window.removeEventListener('keydown', closeOnEscape)
   }, [])
 
+  const leftNavigation = ['About', 'Experience', 'Projects']
+  const rightNavigation = ['Skills', 'Education', 'Contact']
+
   return (
     <header className="site-header">
+      <nav id="primary-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
+        <div className="nav-group nav-group-left">
+          {leftNavigation.map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>
+          ))}
+        </div>
+        <div className="nav-group nav-group-right">
+          {rightNavigation.map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>
+          ))}
+          <a className="nav-resume" href="#contact" onClick={() => setMenuOpen(false)}>Let&apos;s connect <ArrowUpRight aria-hidden="true" /></a>
+        </div>
+      </nav>
       <a className="brand" href="#home" aria-label="Udaykumar Zaware, home">
-        <span className="brand-mark">uz<span>.</span></span>
-        <span className="brand-name">UDAYKUMAR Zaware</span>
+        <span className="brand-mark">UZ</span>
+        <span className="brand-name">DATA · AI · ENGINEERING</span>
       </a>
       <button
         className="menu-toggle"
@@ -51,16 +65,6 @@ function Header() {
       >
         {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
       </button>
-      <nav id="primary-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
-        {navigation.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>
-            {item}
-          </a>
-        ))}
-        <a className="nav-resume" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">
-          Resume <ArrowUpRight aria-hidden="true" />
-        </a>
-      </nav>
       <span className="reading-progress" aria-hidden="true" />
     </header>
   )
@@ -71,30 +75,39 @@ function Hero() {
     <section className="hero page-wrap" id="home">
       <div className="hero-copy">
         <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT <span className="eyebrow-divider">/</span> PUNE, INDIA</p>
-        <h1>Make data<br />make <em>sense.</em></h1>
+        <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
+        <h2 className="hero-role">Data Analytics <span>·</span> Applied AI</h2>
         <p className="hero-intro">
-          I&apos;m Udaykumar — an engineer-in-training who turns raw information into useful insights and explores practical AI, one thoughtful build at a time.
+          I turn raw information into useful insights, build thoughtful dashboards, and explore practical AI — one project at a time.
         </p>
         <div className="hero-actions">
-          <a className="button button-primary" href="#projects">See selected work <ArrowDownRight aria-hidden="true" /></a>
-          <a className="button button-text" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">Download résumé <ArrowDown aria-hidden="true" /></a>
+          <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>
+          <a className="button button-outline" href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
         </div>
-        <div className="hero-proof" aria-label="Areas of focus">
-          <span>01 <b>Analytics</b></span><span>02 <b>Applied AI</b></span><span>03 <b>Computer vision</b></span>
+        <div className="hero-facts" aria-label="A few quick facts">
+          <div><strong>03</strong><span>FOCUS AREAS</span></div>
+          <div><strong>PUNE</strong><span>BASED IN INDIA</span></div>
+          <div><strong>DATA</strong><span>THEN DECISIONS</span></div>
+        </div>
+        <div className="hero-skills" aria-label="Tools I work with">
+          {['SQL', 'Power BI', 'Python', 'Excel', 'YOLO'].map((tool) => <span key={tool}>{tool}</span>)}
         </div>
       </div>
       <div className="hero-visual-wrap">
-        <div className="hero-image-frame">
-          <Image
-            src="/images/data-insights-hero.png"
-            alt="Sculptural cobalt glass forms visualizing data and insight"
-            fill
-            priority
-            sizes="(max-width: 800px) 90vw, 42vw"
-            className="hero-image"
-          />
-          <div className="hero-image-caption"><span>DATA → INSIGHT</span><span>ANALYTICS · APPLIED AI</span></div>
-        </div>
+        <article className="profile-card">
+          <div className="profile-summary">
+            <div className="profile-monogram" aria-hidden="true">UZ</div>
+            <div className="profile-copy"><h2>Udaykumar Zaware</h2><p>Computer Engineering Student</p><span><MapPin aria-hidden="true" /> Pune, India</span></div>
+          </div>
+          <div className="code-card" aria-label="A snapshot of my work">
+            <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  focus: [<span className="code-string">&quot;Analytics&quot;</span>, <span className="code-string">&quot;Applied AI&quot;</span>],<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>],<br />  location: <span className="code-string">&quot;Pune, India&quot;</span><br />{'}'}</code></pre>
+          </div>
+          <div className="profile-links">
+            <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><ArrowUpRight aria-hidden="true" /></a>
+          </div>
+        </article>
       </div>
       <a className="hero-scroll" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown aria-hidden="true" /></a>
       <span className="hero-index">PORTFOLIO <b>·</b> 2026</span>

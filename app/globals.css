@@ -369,3 +369,7 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
   .hero-copy > *, .hero-visual-wrap, .site-header { animation-name: hero-rise; }
 }
 @keyframes hero-rise { from { transform: translateY(14px); } to { transform: translateY(0); } }
+
+.skills, .contact { color: var(--foreground); }
+.project-art { color: var(--foreground); }
+.project-art-database { color: #191a17; }

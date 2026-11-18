@@ -14,19 +14,19 @@
 }
 
 :root {
-  --background: #f4f1e7;
-  --foreground: #191a17;
-  --surface: #fbf9f2;
-  --surface-alt: #eae6da;
-  --line: #d6d1c3;
-  --muted: #62645e;
-  --accent: #e95235;
-  --accent-deep: #a93623;
-  --blue: #273fba;
-  --blue-soft: #d7ddf1;
-  --lime: #d5e18e;
+  --background: #090b10;
+  --foreground: #f3f4f6;
+  --surface: #11151d;
+  --surface-alt: #0d1118;
+  --line: #28303d;
+  --muted: #a1a9b7;
+  --accent: #ff765d;
+  --accent-deep: #ff9078;
+  --blue: #7189ff;
+  --blue-soft: #171e32;
+  --lime: #c9ef83;
   --page-progress: 0%;
-  color-scheme: light;
+  color-scheme: dark;
   font-family: 'Avenir Next', Avenir, 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
@@ -287,3 +287,79 @@ button, a { -webkit-tap-highlight-color: transparent; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal-ready { opacity: 1; transform: none; }
 }
+
+.page-wrap { width: min(1320px, 88%); }
+body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #202b4a25, transparent 34%), radial-gradient(ellipse at 88% 54%, #33211d1b, transparent 30%); }
+.site-header { border-color: var(--line); background: color-mix(in srgb, var(--background) 82%, transparent); }
+.brand-mark { color: var(--blue); }
+.main-nav > a:not(.nav-resume):hover, .button-text:hover { color: var(--accent); }
+.nav-resume { border-color: #414b5c; }
+.nav-resume:hover { background: var(--foreground); color: var(--background); }
+:focus-visible { outline-color: var(--lime); }
+.hero { min-height: min(810px, calc(100svh - 74px)); gap: clamp(45px, 8vw, 120px); }
+.hero h1 { font-size: clamp(74px, 9vw, 124px); }
+.hero-intro { font-size: 17px; }
+.hero-proof { color: var(--accent); }
+.hero-proof b { color: var(--muted); }
+.signal-art { box-shadow: 18px 18px 0 #1b233a; }
+.section-space { padding-block: clamp(100px, 12vw, 168px); }
+.section-heading h2 { font-size: clamp(50px, 6.7vw, 88px); }
+.about-copy > p:not(.about-lede), .project-copy > p, .education-item p, .education-item small { color: var(--muted); }
+.focus-icon { background: #1b233a; color: #aab7ff; }
+.projects { background: var(--surface-alt); }
+.project-list { border-color: var(--line); }
+.project-card { gap: clamp(45px, 8vw, 120px); padding-block: clamp(42px, 6vw, 76px); }
+.project-art { min-height: clamp(310px, 36vw, 440px); border: 1px solid #ffffff0c; box-shadow: 0 20px 60px #0005; }
+.project-card:hover .project-art { transform: translateY(-9px) scale(1.012); box-shadow: 0 30px 80px #0008, 0 0 0 1px #7189ff50; }
+.project-copy h3 { font-size: clamp(36px, 4.4vw, 58px); }
+.project-copy > p { font-size: 14px; }
+.project-approach { display: grid; gap: 7px; margin-top: 16px !important; padding-left: 13px; border-left: 1px solid var(--blue); font-size: 12px !important; }
+.project-approach span { color: #9dacff; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; letter-spacing: .13em; }
+.tag-list span { border-color: #37404e; color: #d4d9e2; }
+.project-link, .all-projects-link, .inline-link { color: var(--accent); }
+.experience-card { background: #121a2a; border: 1px solid #293750; }
+.experience-description { color: #c0c9dc; }
+.experience-details { color: #e0e5ef; }
+.experience-main h3 span { color: #aab7d1; }
+.skills { background: #07090d; }
+.cert-list { border-color: var(--line); background: var(--surface); }
+.contact { background: #111a30; border-block: 1px solid #34415f; }
+.contact-copy > p:not(.section-label), .contact-links > a > span, .contact-location { color: #c5cde0; }
+.contact .button-primary { color: #10140b; }
+.site-footer { row-gap: 22px; }
+@media (max-width: 1000px) {
+  .page-wrap { width: 90%; }
+  .hero h1 { font-size: clamp(68px, 8vw, 94px); }
+}
+@media (max-width: 760px) {
+  .main-nav { background: var(--background); }
+  .hero { min-height: 0; }
+  .project-art { min-height: clamp(280px, 70vw, 390px); }
+}
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(62px, 14vw, 78px); }
+  .project-art { min-height: 270px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .site-header { animation: header-settle .7s cubic-bezier(.2,.8,.2,1) both; }
+  .brand-mark span { display: inline-block; animation: mark-pulse 2.8s ease-in-out infinite; }
+  .section-label > i { transform-origin: left; animation: label-line 1.1s .2s both; }
+  .focus-card, .skill-card, .education-item, .contact-links > a { transition: background .3s ease, transform .35s cubic-bezier(.2,.8,.2,1), border-color .3s ease; }
+  .focus-card:hover, .education-item:hover { transform: translateX(7px); }
+  .skill-card:hover { transform: translateY(-5px); }
+  .contact-links > a:hover { transform: translateX(6px); }
+  .project-art-sales { background-image: radial-gradient(circle at 75% 20%, #7189ff30, transparent 42%); }
+  .project-art-ipl { background-image: radial-gradient(circle at 15% 85%, #ffbd6038, transparent 48%); }
+  .project-art-database { background-image: radial-gradient(circle at 50% 45%, #ffffff39, transparent 54%); }
+  .project-art-vision { background-image: radial-gradient(circle at 82% 22%, #d5e18e25, transparent 48%), linear-gradient(#ffffff10 1px, transparent 1px), linear-gradient(90deg, #ffffff10 1px, transparent 1px); }
+  .schema-node { animation: node-float 4.5s ease-in-out infinite alternate; }
+  .schema-orders { animation-delay: -1.5s; }
+  .schema-customers { animation-delay: -3s; }
+  .vision-target { animation: target-lock 3.8s ease-in-out infinite alternate; }
+  .target-two { animation-delay: -1.9s; }
+}
+@keyframes header-settle { from { opacity: 0; transform: translateY(-9px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes mark-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+@keyframes label-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes node-float { from { transform: translateY(0); } to { transform: translateY(-7px); } }
+@keyframes target-lock { from { transform: scale(.97); opacity: .72; } to { transform: scale(1.035); opacity: 1; } }

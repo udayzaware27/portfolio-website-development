@@ -156,22 +156,26 @@ function About() {
 const projects = [
   {
     number: '01', category: 'DATA ANALYTICS', title: 'Sales dashboard, end to end',
-    description: 'A start-to-finish Excel project: transform raw sales data in Power Query, then make the results easy to explore.',
+    description: 'A start-to-finish Excel project that takes raw sales data through Power Query cleanup and transformation, then presents the prepared data in an interactive dashboard.',
+    approach: 'The workflow moves from source data to cleaned tables, then to pivot-based summaries and an interactive view. The emphasis is on a repeatable transformation process and readable reporting—not on unverified business impact.',
     tools: ['Excel', 'Power Query', 'Pivot Tables'], href: 'https://github.com/udayzaware27/EXCEL-End-To-End-Dashboard', art: 'sales',
   },
   {
     number: '02', category: 'SQL / DATA MODELLING', title: 'Online bookstore analysis',
-    description: 'A relational database analysis of bookstore customers, orders, and books—using SQL to answer questions across connected tables.',
+    description: 'A PostgreSQL case study exploring a bookstore schema built around customers, books, and orders, with SQL queries that connect records across related tables.',
+    approach: 'The analysis uses joins and relational structure to inspect order and customer data. It demonstrates query design against connected tables; no sales lift or customer behavior conclusions are claimed beyond the repository analysis.',
     tools: ['PostgreSQL', 'SQL', 'Joins'], href: 'https://github.com/udayzaware27/SQL_Online_Bookstore_Analysis', art: 'database',
   },
   {
     number: '03', category: 'BUSINESS INTELLIGENCE', title: 'IPL data, made explorable',
-    description: 'A Power BI dashboard exploring IPL seasons, team and player performance, and patterns around toss decisions.',
+    description: 'A Power BI dashboard project that organizes IPL season, team, player, and toss-related data into an explorable visual summary.',
+    approach: 'The project focuses on shaping the tournament data into report views and measures for comparison. Its charts are exploratory summaries, not predictive claims about match outcomes.',
     tools: ['Power BI', 'DAX', 'Data visualization'], href: 'https://github.com/udayzaware27/IPL-Data-Analysis-PowerBI', art: 'ipl',
   },
   {
     number: '04', category: 'COMPUTER VISION', title: 'VisionFit-AI',
-    description: 'An AI fitness trainer concept using YOLO-Pose for exercise recognition, repetition counting, and form assessment.',
+    description: 'A computer-vision fitness trainer concept exploring pose-based exercise recognition, repetition counting, and form feedback with YOLO-Pose.',
+    approach: 'The prototype direction connects pose detection to exercise-specific tracking logic. Form assessment is presented as a project goal, not as a clinically validated coaching system.',
     tools: ['Python', 'YOLO-Pose'], href: 'https://github.com/udayzaware27/VisionFit-AI', art: 'vision',
   },
 ]
@@ -200,6 +204,7 @@ function Projects() {
                 <div className="project-meta"><span>{project.number} / 04</span><span>{project.category}</span></div>
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
+                <p className="project-approach"><span>PROCESS NOTE</span>{project.approach}</p>
                 <div className="tag-list">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div>
                 <a className="project-link" href={project.href} target="_blank" rel="noreferrer">View project on GitHub <ArrowUpRight aria-hidden="true" /></a>
               </div>

@@ -11,6 +11,7 @@ import {
   Check,
   Database,
   Eye,
+  MapPin,
   Menu,
   Phone,
   X,
@@ -54,7 +55,7 @@ function Header() {
       </nav>
       <a className="brand" href="#home" aria-label="Udaykumar Zaware, home">
         <span className="brand-mark">UZ</span>
-        <span className="brand-name">DATA · AI · ENGINEERING</span>
+        <span className="brand-name">DATA · ANALYTICS · ENGINEERING</span>
       </a>
       <button
         className="menu-toggle"
@@ -77,27 +78,28 @@ function Hero() {
       <div className="hero-copy">
         <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT</p>
         <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
-        <h2 className="hero-role">Data Analytics <span>·</span> AI &amp; Computer Vision</h2>
+        <h2 className="hero-role">Data Analytics <span>·</span> Computer Vision</h2>
         <p className="hero-intro">
-          I turn raw information into useful insights, build thoughtful dashboards, and explore AI through computer vision projects.
+          I turn raw data into useful insights, build clear dashboards, and develop hands-on experience with computer vision.
         </p>
         <div className="hero-actions">
           <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>
           <a className="button button-outline" href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
-        </div>
-        <div className="hero-skills" aria-label="Tools I work with">
-          {['SQL', 'Power BI', 'Python', 'Excel', 'YOLO'].map((tool) => <span key={tool}>{tool}</span>)}
         </div>
       </div>
       <div className="hero-visual-wrap">
         <article className="profile-card">
           <div className="profile-summary">
             <div className="profile-monogram" aria-hidden="true">UZ</div>
-            <div className="profile-copy"><h2>Udaykumar Zaware</h2><p>Computer Engineering Student</p></div>
+            <div className="profile-copy">
+              <h2>Udaykumar Zaware</h2>
+              <p>Computer Engineering Student</p>
+              <span className="profile-location"><MapPin aria-hidden="true" />Pune, India</span>
+            </div>
           </div>
           <div className="code-card" aria-label="A snapshot of my work">
             <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
-            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  tools: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>]<br />{'}'}</code></pre>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  technologies: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>]<br />{'}'}</code></pre>
           </div>
           <div className="profile-links">
             <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
@@ -122,7 +124,7 @@ function SectionHeading({ index, label, title, detail }: { index: string; label:
 
 const focusAreas = [
   { icon: <Database aria-hidden="true" />, title: 'Analytics & BI', text: 'Clean, query, and shape data into dashboards and clear business takeaways.' },
-  { icon: <Eye aria-hidden="true" />, title: 'AI & Computer Vision', text: 'Explore image annotation, object detection, tracking, and counting with practical AI workflows.' },
+  { icon: <Eye aria-hidden="true" />, title: 'Computer Vision', text: 'Build hands-on experience with image annotation, object detection, tracking, and counting using computer-vision tools.' }
 ]
 
 function About() {
@@ -132,7 +134,7 @@ function About() {
       <div className="about-grid">
         <div className="about-copy reveal-item">
           <p className="about-lede">The interesting work often happens between the data and the decision.</p>
-          <p>I&apos;m studying Computer Engineering at Modern Education Society&apos;s Wadia College of Engineering in Pune. I&apos;m drawn to practical problems: asking better questions of a dataset, making an analysis easier to understand, and figuring out what an AI workflow can really do.</p>
+          <p>I&apos;m studying Computer Engineering at Modern Education Society&apos;s Wadia College of Engineering in Pune. I&apos;m drawn to practical problems: asking better questions of a dataset, making an analysis easier to understand, and exploring how computer vision can be applied in practice.</p>
           <p>That curiosity currently takes me from SQL and Power BI to Python-based computer vision work with YOLO and Roboflow.</p>
           <a className="inline-link" href="#experience">See what I&apos;m learning <ArrowRight aria-hidden="true" /></a>
         </div>

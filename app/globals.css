@@ -399,14 +399,14 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 .button-primary:hover { background: #ff9078; box-shadow: 0 10px 30px #ff765d32; }
 .button-outline { border-color: #28303d; border-radius: 999px; color: var(--foreground); }
 .button-outline:hover { border-color: var(--accent); background: #ff765d12; }
-.hero-skills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.hero-skills span { padding: 7px 11px; border: 1px solid #ff765d27; border-radius: 999px; color: #a1a9b7; font-size: 10px; }
 .hero-visual-wrap { width: 100%; max-width: 680px; justify-self: end; }
 .profile-card { padding: 18px; border: 1px solid #ff765d2e; border-radius: 16px; background: linear-gradient(140deg, #14161d, #0d1016 72%); box-shadow: 0 24px 80px #0007, inset 0 1px #ffffff08; }
 .profile-summary { display: flex; align-items: center; gap: 16px; padding: 3px 4px 17px; }
 .profile-monogram { display: grid; width: 66px; height: 66px; flex: 0 0 auto; place-items: center; border: 2px solid #ff765d; border-radius: 14px; background: linear-gradient(145deg, #171b23, #090b10); color: #f3f4f6; font-size: 22px; font-weight: 780; letter-spacing: -.08em; }
 .profile-copy h2 { margin: 0 0 5px; color: var(--foreground); font-size: 18px; font-weight: 650; letter-spacing: -.03em; }
 .profile-copy p { margin: 0 0 7px; color: var(--accent-deep); font-size: 12px; }
+.profile-location { display: inline-flex; align-items: center; gap: 5px; color: #a1a9b7; font-size: 10px; }
+.profile-location svg { width: 12px; height: 12px; color: var(--accent); }
 .code-card { overflow: hidden; border: 1px solid #3c424d40; border-radius: 11px; background: #0d1118; box-shadow: 0 10px 36px #0004; }
 .code-titlebar { display: flex; height: 39px; align-items: center; gap: 11px; padding-inline: 13px; border-bottom: 1px solid #ff765d18; background: #151923; color: #a1a9b7; font-family: 'SFMono-Regular', Consolas, monospace; font-size: 10px; }
 .window-dots { display: flex; gap: 5px; }

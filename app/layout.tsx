@@ -4,16 +4,16 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://udayzaware.in'),
-  title: 'Udaykumar Zaware — Data, AI & Computer Vision',
-  description: 'Udaykumar Zaware is a Computer Engineering student in Pune exploring data analytics, business intelligence, and practical computer vision.',
+  title: 'Udaykumar Zaware — Data Analytics & Computer Vision',
+  description: 'Udaykumar Zaware is a Computer Engineering student in Pune focused on data analytics, business intelligence, and hands-on computer vision projects.',
   openGraph: {
-    title: 'Udaykumar Zaware — Data, AI & Computer Vision',
-    description: 'A portfolio of analytics, business intelligence, AI, and computer vision projects by Udaykumar Zaware.',
+    title: 'Udaykumar Zaware — Data Analytics & Computer Vision',
+    description: 'A portfolio of data analytics, business intelligence, and hands-on computer vision projects by Udaykumar Zaware.',
     url: 'https://udayzaware.in',
     siteName: 'Udaykumar Zaware',
     type: 'website',
   },
-  twitter: { card: 'summary_large_image', title: 'Udaykumar Zaware — Data, AI & Computer Vision', description: 'Analytics, business intelligence, AI, and computer vision projects.' },
+  twitter: { card: 'summary_large_image', title: 'Udaykumar Zaware — Data Analytics & Computer Vision', description: 'Data analytics, business intelligence, and hands-on computer vision projects.' },
   icons: { icon: '/icon.svg', apple: '/apple-icon.png' },
 }
 

@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowDown,
@@ -182,15 +183,22 @@ const projects = [
   },
 ]
 
+const projectVisuals: Record<string, { src: string; label: string }> = {
+  sales: { src: '/project-images/sales-analytics.png', label: 'EXCEL · SALES ANALYTICS' },
+  database: { src: '/project-images/bookstore-sql.png', label: 'POSTGRESQL · BOOKSTORE' },
+  ipl: { src: '/project-images/cricket-dashboard.png', label: 'POWER BI · CRICKET DATA' },
+  vision: { src: '/project-images/vision-fitness.png', label: 'POSE TRACKING · YOLO-POSE' },
+}
+
 function ProjectArtwork({ type }: { type: string }) {
-  if (type === 'database') {
-    return <div className="project-art project-art-database" aria-hidden="true"><div className="db-line db-line-one" /><div className="db-line db-line-two" /><div className="schema-node schema-books"><b>BOOKS</b><span>title · genre</span></div><div className="schema-node schema-orders"><b>ORDERS</b><span>book · customer</span></div><div className="schema-node schema-customers"><b>CUSTOMERS</b><span>name · city</span></div><div className="art-stamp">RELATIONAL<br />MODEL</div></div>
-  }
-  if (type === 'vision') {
-    return <div className="project-art project-art-vision" aria-hidden="true"><div className="vision-scan" /><span className="vision-target target-one"><i>POSE / TRACK</i></span><span className="vision-target target-two"><i>DETECTION</i></span><span className="vision-cross cross-one">+</span><span className="vision-cross cross-two">+</span><span className="art-corner-label">FRAME 01 <b>·</b> INFERENCE</span></div>
-  }
-  const bars = type === 'ipl' ? [34, 64, 46, 82, 59, 94, 68, 77, 52, 88, 41, 71] : [42, 58, 34, 72, 49, 84, 61, 92, 57, 76, 48, 67]
-  return <div className={`project-art project-art-${type}`} aria-hidden="true"><div className="chart-topline"><span>{type === 'ipl' ? 'SEASON / PERFORMANCE' : 'SOURCE → TRANSFORM → INSIGHT'}</span><span>{type === 'ipl' ? 'IPL' : 'EXCEL'}</span></div><div className="chart-grid"><div className="chart-guide guide-one" /><div className="chart-guide guide-two" /><div className="chart-bars">{bars.map((height, index) => <span key={index} style={{ '--bar-height': `${height}%`, '--bar-index': index } as CSSProperties} />)}</div><div className="chart-baseline"><span>{type === 'ipl' ? 'SEASONS' : 'MONTHLY VIEW'}</span><span>{type === 'ipl' ? 'TEAMS' : 'SALES'}</span></div></div><div className="art-footnote">{type === 'ipl' ? 'DASHBOARD STUDY' : 'POWER QUERY WORKFLOW'} <ArrowUpRight /></div></div>
+  const visual = projectVisuals[type]
+
+  return (
+    <div className="project-art" aria-hidden="true">
+      <Image src={visual.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
+      <span className="project-art-label">{visual.label}</span>
+    </div>
+  )
 }
 
 function Projects() {

@@ -140,38 +140,41 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-card:hover .project-photo { transform: scale(1.04); }
 .project-art::after { position: absolute; z-index: 1; inset: 48% 0 0; background: linear-gradient(180deg, transparent, #090b10c9); content: ''; pointer-events: none; }
 .project-art-label { position: absolute; z-index: 2; bottom: 18px; left: 18px; padding: 8px 10px; border-left: 2px solid var(--accent); background: #090b10c9; color: var(--foreground); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; letter-spacing: .12em; }
-.project-art.project-art-ipl { min-height: 0; aspect-ratio: 1305 / 730; padding: 7px; border-color: #d5dbe4; background: #f3f5f8; }
+.project-art.project-art-ipl { min-height: 0; aspect-ratio: 1305 / 730; padding: 7px; border-color: #353c46; background: #0d1118; }
 .project-art-ipl::after { display: none; }
-.ipl-dashboard-preview { display: grid; width: 100%; height: 100%; grid-template-rows: 10px minmax(0, 1.15fr) 28px minmax(0, .95fr); gap: 4px; padding: 2px; color: #1b2a3d; font-family: Arial, sans-serif; }
-.ipl-dashboard-topbar { display: flex; align-items: center; justify-content: space-between; color: #526176; font-size: 5px; font-weight: 700; letter-spacing: .1em; }
+.ipl-dashboard-preview { display: grid; width: 100%; height: 100%; grid-template-rows: 10px minmax(0, 1.15fr) 28px minmax(0, .95fr); gap: 4px; padding: 2px; color: #f5f5f4; font-family: Arial, sans-serif; }
+.ipl-dashboard-topbar { display: flex; align-items: center; justify-content: space-between; color: #f1f1ef; font-size: 5px; font-weight: 700; letter-spacing: .1em; }
 .ipl-dashboard-brand { display: flex; align-items: center; gap: 4px; }
-.ipl-dashboard-brand i { width: 6px; height: 6px; border-radius: 2px; background: #168ef2; }
+.ipl-dashboard-brand i { width: 6px; height: 6px; border-radius: 2px; background: #ff7958; }
 .ipl-dashboard-grid { display: grid; min-height: 0; grid-template-columns: 1.15fr 1.08fr .8fr; gap: 4px; }
-.ipl-panel { min-width: 0; min-height: 0; overflow: hidden; padding: 4px 5px; border: 1px solid #dfe5ec; background: #fff; }
-.ipl-panel h3 { overflow: hidden; margin: 0 0 4px; color: #202b39; font-size: 5.7px; font-weight: 700; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
-.ipl-column-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 3px 0; border-bottom: 1px solid #cdd6e0; background: linear-gradient(to top, transparent 24%, #e7ecf2 25%, transparent 26%, transparent 49%, #e7ecf2 50%, transparent 51%, transparent 74%, #e7ecf2 75%, transparent 76%); }
-.ipl-column-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #168ef2; }
-.ipl-column-chart i:nth-child(4n + 1) { background: #ff8a70; }
-.ipl-panel-axis { display: block; margin-top: 2px; color: #788497; font-size: 4px; letter-spacing: .08em; }
+.ipl-panel { min-width: 0; min-height: 0; overflow: hidden; padding: 4px 5px; border: 1px solid #343b46; background: #151a22; }
+.ipl-panel h3 { overflow: hidden; margin: 0 0 4px; color: #f5f5f4; font-size: 5.7px; font-weight: 700; letter-spacing: -.01em; text-overflow: ellipsis; white-space: nowrap; }
+.ipl-column-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 3px 0; border-bottom: 1px solid #6d737c; background: linear-gradient(to top, transparent 24%, #343b46 25%, transparent 26%, transparent 49%, #343b46 50%, transparent 51%, transparent 74%, #343b46 75%, transparent 76%); }
+.ipl-column-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #ff7958; }
+.ipl-column-chart i:nth-child(4n + 1) { background: #f5f5f4; }
+.ipl-panel-axis { display: block; margin-top: 2px; color: #d0d1d2; font-size: 4px; letter-spacing: .08em; }
 .ipl-leader-list { display: grid; gap: 4px; }
-.ipl-leader-row { display: grid; min-width: 0; grid-template-columns: 35px 1fr; align-items: center; gap: 4px; color: #4e5b6d; font-size: 4.7px; }
+.ipl-leader-row { display: grid; min-width: 0; grid-template-columns: 35px 1fr; align-items: center; gap: 4px; color: #efefed; font-size: 4.7px; }
 .ipl-leader-row > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ipl-leader-row > i { display: block; height: 4px; background: #edf1f5; }
-.ipl-leader-row > i > b { display: block; height: 100%; background: #168ef2; }
+.ipl-leader-row > i { display: block; height: 4px; background: #343b46; }
+.ipl-leader-row > i > b { display: block; height: 100%; background: #ff7958; }
 .ipl-season-filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px; }
-.ipl-season-filters span { display: grid; min-height: 9px; place-items: center; border: 1px solid #162a3f; background: #afd5f8; color: #1c2d42; font-size: 4.2px; white-space: nowrap; }
+.ipl-season-filters span { display: grid; min-height: 9px; place-items: center; border: 1px solid #515966; background: #202630; color: #f5f5f4; font-size: 4.2px; white-space: nowrap; }
+.ipl-season-filters span:last-child { border-color: #ff7958; background: #ff7958; color: #17191d; }
 .ipl-dashboard-kpis { display: grid; min-height: 0; grid-template-columns: 1fr 1fr 1.28fr 1fr 1fr; gap: 4px; }
-.ipl-dashboard-kpis > div { display: flex; min-width: 0; flex-direction: column; align-items: center; justify-content: center; gap: 2px; overflow: hidden; border-radius: 3px; background: #b8dcfc; color: #1c2d42; text-align: center; }
+.ipl-dashboard-kpis > div { display: flex; min-width: 0; flex-direction: column; align-items: center; justify-content: center; gap: 2px; overflow: hidden; border: 1px solid #343b46; border-radius: 3px; background: #171d26; color: #f5f5f4; text-align: center; }
 .ipl-dashboard-kpis strong { font-size: 8px; line-height: 1; }
-.ipl-dashboard-kpis span { overflow: hidden; max-width: 100%; font-size: 4.3px; text-overflow: ellipsis; white-space: nowrap; }
-.ipl-dashboard-kpis .ipl-kpi-winner { background: #70baf6; }
+.ipl-dashboard-kpis span { overflow: hidden; max-width: 100%; color: #e5e5e3; font-size: 4.3px; text-overflow: ellipsis; white-space: nowrap; }
+.ipl-dashboard-kpis .ipl-kpi-winner { border-color: #ff7958; background: #ff7958; color: #17191d; }
+.ipl-dashboard-kpis .ipl-kpi-winner span { color: #27201e; }
 .ipl-dashboard-kpis .ipl-kpi-winner strong { font-size: 6.5px; }
 .ipl-dashboard-bottom { grid-template-columns: 1.12fr 1fr .78fr; }
-.ipl-season-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 2px 0; border-bottom: 1px solid #cdd6e0; background: linear-gradient(to top, transparent 24%, #e7ecf2 25%, transparent 26%, transparent 49%, #e7ecf2 50%, transparent 51%, transparent 74%, #e7ecf2 75%, transparent 76%); }
-.ipl-season-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #168ef2; }
+.ipl-season-chart { display: flex; height: calc(100% - 14px); align-items: flex-end; gap: 2px; padding: 3px 2px 0; border-bottom: 1px solid #6d737c; background: linear-gradient(to top, transparent 24%, #343b46 25%, transparent 26%, transparent 49%, #343b46 50%, transparent 51%, transparent 74%, #343b46 75%, transparent 76%); }
+.ipl-season-chart i { flex: 1; border-radius: 1px 1px 0 0; background: #ff7958; }
+.ipl-season-chart i:nth-child(3n + 2) { background: #f5f5f4; }
 .ipl-toss-content { display: flex; height: calc(100% - 12px); align-items: center; justify-content: center; gap: 5px; }
-.ipl-toss-donut { width: clamp(18px, 4vw, 30px); flex: 0 0 auto; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(#182ba5 0 64%, #168ef2 64% 100%); }
-.ipl-toss-legend { display: grid; gap: 3px; color: #5f6c7d; font-size: 4.5px; }
+.ipl-toss-donut { width: clamp(18px, 4vw, 30px); flex: 0 0 auto; aspect-ratio: 1; border-radius: 50%; background: conic-gradient(#ff7958 0 64%, #f5f5f4 64% 100%); }
+.ipl-toss-legend { display: grid; gap: 3px; color: #f1f1ef; font-size: 4.5px; }
 .project-copy { padding-block: 8px; }
 .project-meta { justify-content: space-between; color: var(--muted); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; }
 .project-meta span:first-child { color: var(--accent-deep); }

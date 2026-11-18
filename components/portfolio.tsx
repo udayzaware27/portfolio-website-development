@@ -1,45 +1,357 @@
 'use client'
 
-import { useState } from 'react'
-import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, Check, Code2, Database, Mail, Menu, ScanLine, Sparkles, UserRound, X } from 'lucide-react'
+import Image from 'next/image'
+import IplDashboardPreview from '@/components/ipl-dashboard-preview'
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
+import {
+  ArrowDown,
+  ArrowDownRight,
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Database,
+  Eye,
+  MapPin,
+  Menu,
+  Phone,
+  X,
+} from 'lucide-react'
 
-const profileImage = 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/WhatsApp%20Image%202026-05-25%20at%2010.05.41-hVO2dCzlDw83MUfJZlYN7hw7pyo0jb.jpeg'
-const links = { github: 'https://github.com/udayzaware27', linkedin: 'https://www.linkedin.com/in/udaykumar-zaware27', email: 'mailto:udayzaware09@gmail.com' }
+const profile = {
+  github: 'https://github.com/udayzaware27',
+  linkedin: 'https://www.linkedin.com/in/udaykumar-zaware27',
+  email: 'mailto:udayzaware09@gmail.com',
+}
 
-function Navigation() {
-  const [open, setOpen] = useState(false)
-  const items = ['About', 'Skills', 'Experience', 'Projects', 'Education', 'Contact']
-  return <header className="site-header"><a className="wordmark" href="#home" aria-label="Udaykumar Zaware, home"><span className="wordmark-mark">UZ</span><span>UDAYKUMAR <i>ZAWARE</i></span></a><nav className={open ? 'nav-links nav-open' : 'nav-links'} aria-label="Main navigation">{items.map(item => <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setOpen(false)}>{item}</a>)}<a className="nav-resume" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">Resume <ArrowUpRight size={14}/></a></nav><button className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X/> : <Menu/>}</button></header>
+function Header() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
+  useEffect(() => {
+    function closeOnEscape(event: KeyboardEvent) {
+      if (event.key === 'Escape') setMenuOpen(false)
+    }
+
+    window.addEventListener('keydown', closeOnEscape)
+    return () => window.removeEventListener('keydown', closeOnEscape)
+  }, [])
+
+  const leftNavigation = ['About', 'Experience', 'Projects']
+  const rightNavigation = ['Skills', 'Education', 'Contact']
+
+  return (
+    <header className="site-header">
+      <nav id="primary-navigation" className={menuOpen ? 'main-nav is-open' : 'main-nav'} aria-label="Main navigation">
+        <div className="nav-group nav-group-left">
+          {leftNavigation.map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>
+          ))}
+        </div>
+        <div className="nav-group nav-group-right">
+          {rightNavigation.map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`} onClick={() => setMenuOpen(false)}>{item}</a>
+          ))}
+          <a className="nav-resume" href="#contact" onClick={() => setMenuOpen(false)}>Let&apos;s connect <ArrowUpRight aria-hidden="true" /></a>
+        </div>
+      </nav>
+      <a className="brand" href="#home" aria-label="Udaykumar Zaware, home">
+        <span className="brand-mark">UZ</span>
+        <span className="brand-name">DATA · COMPUTER VISION · ENGINEERING</span>
+      </a>
+      <button
+        className="menu-toggle"
+        type="button"
+        aria-label={menuOpen ? 'Close navigation' : 'Open navigation'}
+        aria-expanded={menuOpen}
+        aria-controls="primary-navigation"
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        {menuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+      </button>
+      <span className="reading-progress" aria-hidden="true" />
+    </header>
+  )
 }
 
 function Hero() {
-  return <section className="hero section-wrap" id="home"><div className="hero-copy"><div className="eyebrow"><span className="eyebrow-dot"/> HELLO, I&apos;M UDAYKUMAR <span className="eyebrow-line"/> PUNE, INDIA</div><h1>Turning data<br/>into <em>insights.</em><br/>Building intelligence<br/>with <em>AI.</em></h1><p className="hero-description">Computer Engineering student exploring the intersection of Data Analytics, Artificial Intelligence, and Computer Vision.</p><div className="hero-specialties"><span>DATA ANALYTICS</span><b>／</b><span>ARTIFICIAL INTELLIGENCE</span><b>／</b><span>COMPUTER VISION</span></div><div className="hero-actions"><a className="button button-primary" href="#projects">Explore my work <ArrowDownRight size={17}/></a><a className="button button-quiet" href="/resume.pdf" download="Udaykumar_Zaware_Resume.pdf">Download resume <ArrowDown size={15}/></a></div><div className="hero-socials"><a href={links.github} target="_blank" rel="noreferrer"><Code2 size={16}/> GitHub <ArrowUpRight size={12}/></a><a href={links.linkedin} target="_blank" rel="noreferrer"><UserRound size={16}/> LinkedIn <ArrowUpRight size={12}/></a><a href={links.email}><Mail size={16}/> Email <ArrowUpRight size={12}/></a></div></div><div className="hero-visual"><div className="image-frame"><img src={profileImage} alt="Udaykumar Zaware in a black blazer and white shirt"/><span className="frame-corner corner-tl"/><span className="frame-corner corner-br"/><div className="image-index">FIG. 01 <span>—</span> PROFILE</div></div><div className="visual-note note-top"><span className="note-icon"><ScanLine size={15}/></span><span>COMPUTER VISION<br/><b>IN PROGRESS</b></span></div><div className="visual-note note-bottom"><span className="live-dot"/> OPEN TO OPPORTUNITIES <ArrowUpRight size={13}/></div><div className="hero-coordinate">18°31&apos; N<br/>73°51&apos; E</div><div className="hero-stamp">DATA <span>×</span> INTELLIGENCE <span>×</span> VISION</div></div><a className="scroll-cue" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown size={14}/></a><div className="hero-count">01 <span>/ 06</span></div></section>
+  return (
+    <section className="hero page-wrap" id="home">
+      <div className="hero-copy">
+        <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT</p>
+        <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
+        <h2 className="hero-role">Data Analytics <span>·</span> AI-Computer Vision</h2>
+        <p className="hero-intro">
+          I turn raw data into actionable insights and build clear dashboards that reveal patterns. I also explore computer vision through hands-on projects in detection, tracking, and image analysis.
+        </p>
+        <div className="hero-actions">
+          <a className="button button-primary" href="#projects">See my work <ArrowDownRight aria-hidden="true" /></a>
+          <a className="button button-outline" href="#contact">Get in touch <ArrowUpRight aria-hidden="true" /></a>
+        </div>
+      </div>
+      <div className="hero-visual-wrap">
+        <article className="profile-card">
+          <div className="profile-summary">
+            <div className="profile-monogram" aria-hidden="true">UZ</div>
+            <div className="profile-copy">
+              <h2>Udaykumar Zaware</h2>
+              <p>Computer Engineering Student</p>
+              <span className="profile-location"><MapPin aria-hidden="true" />Pune, India</span>
+            </div>
+          </div>
+          <div className="code-card" aria-label="A snapshot of my work">
+            <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  location: <span className="code-string">&quot;Pune, India&quot;</span>,<br />  technologies: [<br />    <span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>,<br />    <span className="code-string">&quot;Excel&quot;</span>, <span className="code-string">&quot;YOLO&quot;</span>, <span className="code-string">&quot;Power Query&quot;</span><br />  ]<br />{'}'}</code></pre>
+          </div>
+          <div className="profile-links">
+            <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LinkedIn</span><ArrowUpRight aria-hidden="true" /></a>
+          </div>
+        </article>
+      </div>
+      <a className="hero-scroll" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown aria-hidden="true" /></a>
+      <span className="hero-index">PORTFOLIO <b>·</b> 2026</span>
+    </section>
+  )
 }
 
-function SectionHeading({ index, kicker, title, children }: { index: string; kicker: string; title: React.ReactNode; children?: React.ReactNode }) { return <div className="section-heading"><div className="section-kicker"><span>{index}</span><span className="kicker-rule"/>{kicker}</div><div className="section-title-row"><h2>{title}</h2>{children && <p>{children}</p>}</div></div> }
+function SectionHeading({ index, label, title, detail }: { index: string; label: string; title: ReactNode; detail?: string }) {
+  return (
+    <div className="section-heading reveal-item">
+      <div className="section-label"><span>{index}</span><i />{label}</div>
+      <div className="section-heading-row"><h2>{title}</h2>{detail && <p>{detail}</p>}</div>
+    </div>
+  )
+}
 
-function About() { return <section className="content-section about-section section-wrap" id="about"><SectionHeading index="01" kicker="A LITTLE ABOUT ME" title={<>Curious about data.<br/><em>Driven by technology.</em></>}/><div className="about-grid"><div className="about-intro"><p className="lead">I&apos;m a Computer Engineering student at Modern Education Society&apos;s Wadia College of Engineering, Pune, graduating in 2027.</p><p>My interests span Data Analytics, Artificial Intelligence, and Computer Vision. I enjoy transforming raw data into meaningful insights and exploring intelligent solutions to real-world problems.</p><p>Currently, I&apos;m an AI Intern at AI Unika Technologies, gaining practical exposure to computer vision workflows using Python, YOLO, and Roboflow.</p><a className="text-link" href="#experience">More about my journey <ArrowRight size={15}/></a></div><div className="focus-list">{[{n:'01',title:'Data analytics',desc:'Transforming raw data into meaningful insights with SQL, Excel, Power Query, and Power BI.',icon:<Database/>},{n:'02',title:'Artificial intelligence',desc:'Exploring AI workflows, dataset preparation, model training, and intelligent applications.',icon:<Sparkles/>},{n:'03',title:'Computer vision',desc:'Working with image annotation, object detection, tracking, and counting workflows.',icon:<ScanLine/>}].map(x=><article className="focus-item" key={x.n}><span className="focus-number">{x.n}</span><span className="focus-icon">{x.icon}</span><div><h3>{x.title}</h3><p>{x.desc}</p></div><ArrowUpRight className="focus-arrow" size={16}/></article>)}</div></div></section> }
+const focusAreas = [
+  { icon: <Database aria-hidden="true" />, title: 'Analytics & BI', text: 'Clean, query, and shape data into dashboards and clear business takeaways.' },
+  { icon: <Eye aria-hidden="true" />, title: 'Computer Vision', text: 'Build hands-on experience with image annotation, object detection, tracking, and counting using computer-vision tools.' }
+]
 
-const skillGroups = [{name:'Programming',index:'01',skills:['Python']},{name:'Data analytics',index:'02',skills:['SQL','PostgreSQL','Advanced Excel','Data Cleaning','Data Aggregation','Business Insights']},{name:'Excel & transformation',index:'03',skills:['Power Query','Pivot Tables','KPI Calculations']},{name:'Business intelligence',index:'04',skills:['Power BI','DAX','Interactive Dashboards','Data Visualization']},{name:'Computer vision',index:'05',skills:['YOLO','Roboflow','Object Detection','Object Tracking','Model Training','Model Testing']},{name:'Data annotation & tools',index:'06',skills:['Image Annotation','Dataset Preparation','Quality Assurance','Git','GitHub','pgAdmin','VS Code']}]
-function Skills() { return <section className="content-section skills-section" id="skills"><div className="section-wrap"><SectionHeading index="02" kicker="TOOLS OF THE TRADE" title={<>A practical <em>toolkit.</em></>}><span>Skills built through projects, coursework, and hands-on experience. No arbitrary scores—just tools I work with.</span></SectionHeading><div className="skills-grid">{skillGroups.map(group=><article className="skill-group" key={group.index}><div className="skill-group-top"><span>{group.index} / 06</span><Code2 size={15}/></div><h3>{group.name}</h3><div className="skill-tags">{group.skills.map(skill=><span key={skill}>{skill}</span>)}</div></article>)}</div></div></section> }
-
-function Experience() { return <section className="content-section section-wrap" id="experience"><SectionHeading index="03" kicker="WHERE I'M LEARNING" title={<>Experience in <em>practice.</em></>}/><div className="timeline"><div className="timeline-marker"><span/></div><div className="experience-card"><div className="experience-top"><div><div className="role-label">CURRENT ROLE <span className="live-dot"/></div><h3>AI Intern</h3><p className="company">AI Unika Technologies Pvt. Ltd. <span>·</span> Pune, Maharashtra</p></div><div className="experience-date">23 MAY 2026 <span>— PRESENT</span></div></div><p className="experience-summary">Contributing to hands-on computer vision workflows, from preparing image datasets to training and evaluating models.</p><ul className="experience-list"><li>Annotating and labeling images for AI model training, with attention to consistency and quality.</li><li>Preparing datasets and supporting object detection, masking, counting, and tracking workflows.</li><li>Gaining practical exposure to model training and testing using Python, YOLO, and Roboflow.</li></ul><div className="tag-row">{['Python','YOLO','Roboflow','Computer Vision','Image Annotation'].map(t=><span key={t}>{t}</span>)}</div></div></div></section> }
+function About() {
+  return (
+    <section className="about section-space page-wrap" id="about">
+      <SectionHeading index="01" label="A BIT ABOUT ME" title={<>Curiosity, <em>put to work.</em></>} detail="I like the part where a messy problem starts to become clear." />
+      <div className="about-grid">
+        <div className="about-copy reveal-item">
+          <p className="about-lede">The interesting work often happens between the data and the decision.</p>
+          <p>I&apos;m studying Computer Engineering at Modern Education Society&apos;s Wadia College of Engineering in Pune. I&apos;m drawn to practical problems: asking better questions of a dataset, making an analysis easier to understand, and exploring how computer vision can be applied in practice.</p>
+          <p>That curiosity currently takes me from SQL and Power BI to Python-based computer vision work with YOLO and Roboflow.</p>
+          <a className="inline-link" href="#experience">See what I&apos;m learning <ArrowRight aria-hidden="true" /></a>
+        </div>
+        <div className="focus-list">
+          {focusAreas.map((area, index) => (
+            <article className="focus-card reveal-item" key={area.title} style={{ '--stagger': `${index * 100}ms` } as CSSProperties}>
+              <span className="focus-number">0{index + 1}</span>
+              <span className="focus-icon">{area.icon}</span>
+              <div><h3>{area.title}</h3><p>{area.text}</p></div>
+              <ArrowUpRight className="focus-arrow" aria-hidden="true" />
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
 const projects = [
- {num:'01',category:'DATA ANALYTICS',title:'Excel end-to-end\nsales dashboard',description:'An interactive sales dashboard, built from raw transactional data transformed in Power Query.',tools:['Microsoft Excel','Power Query','Pivot Tables','Charts'],link:'https://github.com/udayzaware27/EXCEL-End-To-End-Dashboard',visual:'sales'},
- {num:'02',category:'DATABASE ANALYTICS',title:'Online bookstore\ndata analysis',description:'A relational analysis of bookstore orders, customers, books, and sales using PostgreSQL queries.',tools:['PostgreSQL','SQL','JOINs','Aggregations'],link:'https://github.com/udayzaware27/SQL_Online_Bookstore_Analysis',visual:'database'},
- {num:'03',category:'BUSINESS INTELLIGENCE',title:'IPL data analysis\ndashboard',description:'An interactive view of team performance, leading players, seasonal trends, and toss decisions.',tools:['Power BI','DAX','Kaggle IPL Dataset'],link:'https://github.com/udayzaware27/IPL-Data-Analysis-PowerBI',visual:'ipl'},
- {num:'04',category:'ARTIFICIAL INTELLIGENCE',title:'VisionFit-AI',description:'An AI-powered fitness trainer using YOLO-Pose for exercise recognition, repetition counting, and form assessment.',tools:['Python','YOLO-Pose'],link:'https://github.com/udayzaware27/VisionFit-AI',visual:'vision'}
+  {
+    number: '01', category: 'DATA ANALYTICS', title: 'Sales dashboard, end to end',
+    description: 'A start-to-finish Excel project that takes raw sales data through Power Query cleanup and transformation, then presents the prepared data in an interactive dashboard.',
+    approach: 'The workflow moves from source data to cleaned tables, then to pivot-based summaries and an interactive view. The emphasis is on a repeatable transformation process and readable reporting—not on unverified business impact.',
+    tools: ['Excel', 'Power Query', 'Pivot Tables'], href: 'https://github.com/udayzaware27/EXCEL-End-To-End-Dashboard', art: 'sales',
+  },
+  {
+    number: '02', category: 'SQL / DATA MODELLING', title: 'Online bookstore analysis',
+    description: 'A PostgreSQL case study exploring a bookstore schema built around customers, books, and orders, with SQL queries that connect records across related tables.',
+    approach: 'The analysis uses joins and relational structure to inspect order and customer data. It demonstrates query design against connected tables; no sales lift or customer behavior conclusions are claimed beyond the repository analysis.',
+    tools: ['PostgreSQL', 'SQL', 'Joins'], href: 'https://github.com/udayzaware27/SQL_Online_Bookstore_Analysis', art: 'database',
+  },
+  {
+    number: '03', category: 'BUSINESS INTELLIGENCE', title: 'IPL data, made explorable',
+    description: 'A Power BI dashboard project that organizes IPL season, team, player, and toss-related data into an explorable visual summary.',
+    approach: 'The project focuses on shaping the tournament data into report views and measures for comparison. Its charts are exploratory summaries, not predictive claims about match outcomes.',
+    tools: ['Power BI', 'DAX', 'Data visualization'], href: 'https://github.com/udayzaware27/IPL-Data-Analysis-PowerBI', art: 'ipl',
+  },
+  {
+    number: '04', category: 'COMPUTER VISION', title: 'VisionFit-AI',
+    description: 'A computer-vision fitness trainer concept exploring pose-based exercise recognition, repetition counting, and form feedback with YOLO-Pose.',
+    approach: 'The prototype direction connects pose detection to exercise-specific tracking logic. Form assessment is presented as a project goal, not as a clinically validated coaching system.',
+    tools: ['Python', 'YOLO-Pose'], href: 'https://github.com/udayzaware27/VisionFit-AI', art: 'vision',
+  },
 ]
-function ProjectVisual({type}:{type:string}) { if(type==='sales') return <div className="project-visual sales-visual"><div className="visual-topline"><span>SALES OVERVIEW</span><span>FY · 2024</span></div><div className="sales-kpis"><div><small>TOTAL SALES</small><b>₹2.26<span>L</span></b></div><div><small>TRANSACTIONS</small><b>413</b></div><div><small>UNITS SOLD</small><b>1,002</b></div></div><div className="chart-label">MONTHLY PERFORMANCE <span>JAN — DEC</span></div><div className="bar-chart">{[32,46,38,58,44,69,51,82,62,75,56,91].map((height,i)=><span key={i} style={{height:`${height}%`}} className={i===11?'bar-highlight':''}/>)}</div><div className="chart-months"><span>JAN</span><span>APR</span><span>AUG</span><span>DEC</span></div><span className="visual-disclaimer">PROJECT VISUALIZATION · NOT A SOURCE SCREENSHOT</span></div>; if(type==='database') return <div className="project-visual db-visual"><span className="db-caption">RELATIONAL MODEL / CONCEPT</span><div className="db-schema"><div className="db-table"><b>books</b><span>id · title · genre</span><span>author · price</span></div><div className="db-table db-center"><b>orders</b><span>order_id · book_id</span><span>customer_id · quantity</span></div><div className="db-table"><b>customers</b><span>id · name</span><span>city · email</span></div><div className="db-connector connector-one"/><div className="db-connector connector-two"/></div><div className="sql-line"><span>SELECT</span> genre, <span>SUM</span>(revenue)<br/><span>FROM</span> bookstore <span>GROUP BY</span> genre;<b>⌁</b></div><span className="visual-disclaimer">ILLUSTRATIVE SCHEMA · PROJECT CONCEPT</span></div>; if(type==='ipl') return <div className="project-visual ipl-visual"><div className="ipl-top"><span>IPL / PERFORMANCE INDEX</span><span>SEASONAL VIEW ↗</span></div><div className="ipl-score"><strong>SEASON<br/>BY SEASON</strong><div className="ipl-bars">{[48,66,54,78,61,94,73,84,63].map((h,i)=><i key={i} style={{height:`${h}%`}}/>)}</div></div><div className="ipl-bottom"><span>TEAM PERFORMANCE</span><span>PLAYER METRICS</span><span>TOSS TRENDS</span></div><span className="visual-disclaimer">PROJECT VISUALIZATION · NOT A SOURCE SCREENSHOT</span></div>; return <div className="project-visual vision-visual"><div className="vision-grid"><div className="vision-scan"><ScanLine/><span>VISION / 04</span></div><div className="vision-frame"><span/><i>OBJECT / UNVERIFIED</i></div><div className="vision-cross">+</div></div><div className="vision-caption">VISIONFIT-AI / YOLO-POSE <ArrowUpRight size={14}/></div><span className="visual-disclaimer">CONCEPT ART · NOT A MODEL RESULT</span></div> }
-function Projects() { return <section className="content-section projects-section" id="projects"><div className="section-wrap"><SectionHeading index="04" kicker="SELECTED WORK" title={<>Ideas into <em>implementation.</em></>}><span>A selection of analytics, business intelligence, and AI work—each linked to its source repository.</span></SectionHeading><div className="projects-list">{projects.map((project,i)=><article className={`project-row project-${project.num}`} key={project.num}><div className="project-main"><ProjectVisual type={project.visual}/><div className="project-details"><div className="project-meta"><span>{project.num} / 04</span><span>{project.category}</span></div><h3>{project.title.split('\n').map((line,i)=><span key={i}>{line}{i===0&&<br/>}</span>)}</h3><p>{project.description}</p><div className="tag-row">{project.tools.map(tool=><span key={tool}>{tool}</span>)}</div><a className="project-link" href={project.link} target="_blank" rel="noreferrer">Explore repository <ArrowUpRight size={15}/></a></div></div></article>)}</div><div className="all-projects"><span>MORE IN THE WORKS</span><a href={links.github} target="_blank" rel="noreferrer">View GitHub profile <ArrowUpRight size={15}/></a></div></div></section> }
 
-function Vision() { return <section className="vision-section" id="vision"><div className="vision-section-inner section-wrap"><div className="vision-copy"><div className="section-kicker"><span>05</span><span className="kicker-rule"/>EXPLORING THE VISUAL WORLD</div><h2>Teaching machines<br/>to <em>see & understand.</em></h2><p>Exploring computer vision workflows through image annotation, dataset preparation, object detection, and object tracking.</p><a className="text-link" href={links.github} target="_blank" rel="noreferrer">Follow my work on GitHub <ArrowUpRight size={15}/></a></div><div className="vision-board" aria-label="Illustrative computer vision annotation graphic"><div className="board-top"><span>ANNOTATION WORKFLOW</span><span>01 — 07</span></div><div className="board-image"><div className="board-reticle"/><span className="box box-a"><i>OBJECT A · 0.94</i></span><span className="box box-b"><i>OBJECT B · 0.87</i></span><span className="coord coord-a">X: 128 · Y: 096</span><span className="coord coord-b">TRACKING / ACTIVE</span><span className="board-cross">+</span></div><div className="board-steps">{['ANNOTATE','PREPARE','DETECT','TRACK'].map((x,i)=><span key={x}><b>0{i+1}</b>{x}</span>)}</div><div className="board-note">ILLUSTRATIVE INTERFACE · NOT A PROJECT RESULT</div></div></div></section> }
+const projectVisuals: Record<string, { src: string; label: string }> = {
+  sales: { src: '/project-images/sales-analytics.png', label: 'EXCEL · SALES ANALYTICS' },
+  database: { src: '/project-images/bookstore-sql.png', label: 'POSTGRESQL · BOOKSTORE' },
+  vision: { src: '/project-images/vision-fitness.png', label: 'POSE TRACKING · YOLO-POSE' },
+}
 
-function Education() { const certs=['SQL (PostgreSQL) Mastery','Power Query Mastery','Advanced Excel Mastery','Git & GitHub – Master Version Control']; return <section className="content-section section-wrap" id="education"><SectionHeading index="06" kicker="FOUNDATIONS & CREDENTIALS" title={<>Learning by <em>building.</em></>}/><div className="education-grid"><div className="education-list"><div className="education-item"><div className="education-year">2023 — 2027</div><div><span className="education-type">BACHELOR OF ENGINEERING</span><h3>Computer Engineering</h3><p>Modern Education Society&apos;s Wadia College of Engineering, Pune</p><span className="education-sub">Savitribai Phule Pune University (SPPU)</span></div></div><div className="education-item"><div className="education-year">2023</div><div><span className="education-type">HIGHER SECONDARY CERTIFICATE</span><h3>Science (PCM)</h3><p>Kondiram Sadashiv Kshirsagar Junior College (Arts), Bhigwan</p></div></div></div><div className="certifications"><div className="cert-heading"><span>CERTIFICATIONS</span><span>04</span></div>{certs.map((cert,i)=><div className="cert-item" key={cert}><span className="cert-icon"><Check size={14}/></span><div><h3>{cert}</h3><p>{i===3?'ScholarHat · 2025':'Skill Course · 2025'}</p></div><ArrowUpRight size={14}/></div>)}</div></div></section> }
+function ProjectArtwork({ type }: { type: string }) {
+  if (type === 'ipl') {
+    return (
+      <div className="project-art project-art-ipl">
+        <IplDashboardPreview />
+      </div>
+    )
+  }
 
-function Contact() { const [notice,setNotice]=useState(''); function submit(event:React.FormEvent<HTMLFormElement>) { event.preventDefault(); const data=new FormData(event.currentTarget); const name=String(data.get('name')||'').trim(); const email=String(data.get('email')||'').trim(); const subject=String(data.get('subject')||'').trim(); const message=String(data.get('message')||'').trim(); const body=`From: ${name} (${email})\n\n${message}`; setNotice('Your email app will open with the message ready. It has not been sent yet.'); window.location.href=`mailto:udayzaware09@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}` } return <section className="contact-section" id="contact"><div className="section-wrap"><SectionHeading index="07" kicker="HAVE SOMETHING IN MIND?" title={<>Let&apos;s build something<br/><em>meaningful.</em></>}><span>Have an interesting project, technical opportunity, or collaboration in mind? I&apos;d be happy to connect.</span></SectionHeading><div className="contact-grid"><div className="contact-details"><a href={links.email}><span className="contact-icon"><Mail size={17}/></span><span><small>EMAIL</small><b>udayzaware09@gmail.com</b></span><ArrowUpRight size={15}/></a><a href={links.linkedin} target="_blank" rel="noreferrer"><span className="contact-icon"><UserRound size={17}/></span><span><small>LINKEDIN</small><b>Connect professionally</b></span><ArrowUpRight size={15}/></a><a href={links.github} target="_blank" rel="noreferrer"><span className="contact-icon"><Code2 size={17}/></span><span><small>GITHUB</small><b>Explore my repositories</b></span><ArrowUpRight size={15}/></a><div className="location-note"><span className="live-dot"/> BASED IN PUNE, MAHARASHTRA, INDIA</div></div><form className="contact-form" onSubmit={submit}><div className="form-row"><label>YOUR NAME<input name="name" autoComplete="name" placeholder="Name" required maxLength={100}/></label><label>EMAIL ADDRESS<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required maxLength={254}/></label></div><label>SUBJECT<input name="subject" placeholder="What would you like to discuss?" required maxLength={160}/></label><label>MESSAGE<textarea name="message" rows={4} placeholder="A little context goes a long way..." required maxLength={4000}/></label><button className="button button-primary" type="submit">Prepare email <ArrowUpRight size={16}/></button>{notice&&<p className="form-notice" role="status">{notice}</p>}<p className="form-footnote">This opens your email app. No message is sent by this website.</p></form></div></div></section> }
+  const visual = projectVisuals[type]
 
-function Footer() { return <footer className="site-footer"><div className="section-wrap footer-top"><a className="wordmark" href="#home"><span className="wordmark-mark">UZ</span><span>UDAYKUMAR <i>ZAWARE</i></span></a><p>Data Analytics <span>·</span> Artificial Intelligence <span>·</span> Computer Vision</p><a className="back-top" href="#home">BACK TO TOP <ArrowUpRight size={13}/></a></div><div className="section-wrap footer-bottom"><span>© {new Date().getFullYear()} Udaykumar Zaware</span><span>DESIGNED WITH INTENTION <i>·</i> BUILT TO KEEP LEARNING</span><div><a href={links.github} target="_blank" rel="noreferrer">GITHUB</a><a href={links.linkedin} target="_blank" rel="noreferrer">LINKEDIN</a><a href={links.email}>EMAIL</a></div></div></footer> }
+  return (
+    <div className="project-art" aria-hidden="true">
+      <Image src={visual.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
+      <span className="project-art-label">{visual.label}</span>
+    </div>
+  )
+}
 
-export default function Portfolio() { return <><Navigation/><main><Hero/><About/><Skills/><Experience/><Projects/><Vision/><Education/><Contact/></main><Footer/></> }
+function Projects() {
+  return (
+    <section className="projects section-space" id="projects">
+      <div className="page-wrap">
+        <SectionHeading index="02" label="SELECTED PROJECTS" title={<>Small questions.<br /><em>Useful answers.</em></>} detail="A few things I&apos;ve built while learning analytics, databases, BI, and vision." />
+        <div className="project-list">
+          {projects.map((project, index) => (
+            <article className="project-card reveal-item" key={project.number} style={{ '--stagger': `${index * 80}ms` } as CSSProperties}>
+              <ProjectArtwork type={project.art} />
+              <div className="project-copy">
+                <div className="project-meta"><span>{project.number} / 04</span><span>{project.category}</span></div>
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <p className="project-approach"><span>PROCESS NOTE</span>{project.approach}</p>
+                <div className="tag-list">{project.tools.map(tool => <span key={tool}>{tool}</span>)}</div>
+                <a className="project-link" href={project.href} target="_blank" rel="noreferrer">View project on GitHub <ArrowUpRight aria-hidden="true" /></a>
+              </div>
+            </article>
+          ))}
+        </div>
+        <a className="all-projects-link" href={profile.github} target="_blank" rel="noreferrer">More experiments on GitHub <ArrowUpRight aria-hidden="true" /></a>
+      </div>
+    </section>
+  )
+}
+
+function Experience() {
+  return (
+    <section className="experience section-space page-wrap" id="experience">
+      <SectionHeading index="03" label="LEARNING IN PRACTICE" title={<>A first step into <em>AI.</em></>} detail="Hands-on computer vision experience at AI Unika Technologies." />
+      <article className="experience-card reveal-item">
+        <div className="experience-date">MAY 2026 <span>—</span> PRESENT</div>
+        <div className="experience-main">
+          <p className="experience-kicker">AI INTERNSHIP <span className="status-dot" /> PUNE, INDIA</p>
+          <h3>AI Intern <span>at</span><br />AI Unika Technologies</h3>
+          <p className="experience-description">Training and testing computer vision models for real-world monitoring tasks. My work includes preparing and annotating image datasets, training detection models, and evaluating their results across PPE compliance, city monitoring, and road-defect monitoring use cases.</p>
+          <div className="experience-details"><span><Check aria-hidden="true" /> PPE detection: trained and tested safety-gear detection models</span><span><Check aria-hidden="true" /> City monitoring: developed models to detect and monitor urban scenes</span><span><Check aria-hidden="true" /> Road defects: trained and tested models to identify surface issues</span><span><Check aria-hidden="true" /> Dataset annotation, preparation & model evaluation with Python, YOLO and Roboflow</span></div>
+        </div>
+      </article>
+    </section>
+  )
+}
+
+const skillGroups = [
+  { name: 'Data & SQL', items: ['SQL', 'PostgreSQL', 'Joins', 'Data cleaning'] },
+  { name: 'Excel & data prep', items: ['Excel', 'Formulas', 'Charts', 'Pivot tables', 'Pivot charts', 'Lookup functions', 'Power Query', 'Data transformation', 'Dataset preparation'] },
+  { name: 'Business intelligence', items: ['Power BI', 'DAX', 'Dashboards', 'Data visualization'] },
+  { name: 'Python & data', items: ['Python', 'Data processing', 'Scripting'] },
+  { name: 'Computer vision', items: ['YOLO', 'Roboflow', 'Image annotation', 'Object detection', 'Object tracking', 'Masking & counting', 'Model training', 'Model testing'] },
+  { name: 'Tools & workflow', items: ['Git', 'GitHub', 'pgAdmin', 'VS Code'] },
+]
+
+function Skills() {
+  return (
+    <section className="skills section-space" id="skills">
+      <div className="page-wrap">
+        <SectionHeading index="04" label="TOOLS I REACH FOR" title={<>A growing <em>toolkit.</em></>} detail="Grouped by the kind of work I use them for—not by an arbitrary skill score." />
+        <div className="skill-grid">
+          {skillGroups.map((group, index) => (
+            <article className="skill-card reveal-item" key={group.name} style={{ '--stagger': `${index * 90}ms` } as CSSProperties}>
+              <span className="skill-index">0{index + 1} <i>—</i> {String(skillGroups.length).padStart(2, '0')}</span>
+              <h3>{group.name}</h3>
+              <div className="tag-list">{group.items.map(item => <span key={item}>{item}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+const certifications = [
+  { title: 'SQL (PostgreSQL) Mastery', href: 'https://drive.google.com/file/d/123n1DNwMA-D2gfShnphz4WZlqI0t1tIo/view?usp=sharing' },
+  { title: 'Power Query Mastery', href: 'https://drive.google.com/file/d/15if48WbsRxsPVd8XZ95E_yPlnl-pX2iq/view?usp=sharing' },
+  { title: 'Advanced Excel Mastery', href: 'https://drive.google.com/file/d/1DAwGk9oHkqnLtqKSKM2747Xm1NoMwqfH/view?usp=sharing' },
+  { title: 'Git & GitHub — Master Version Control', href: 'https://drive.google.com/file/d/1UxwN2DOab_a6ibM-LaND76sWsqUTKYu8/view?usp=sharing' },
+]
+
+function Education() {
+  return (
+    <section className="education section-space page-wrap" id="education">
+      <SectionHeading index="05" label="EDUCATION & COURSES" title={<>Learning is the <em>long game.</em></>} />
+      <div className="education-grid">
+        <div className="education-list">
+          <article className="education-item reveal-item"><span className="education-years">2023 — 2027</span><div><span className="education-type">BACHELOR OF ENGINEERING</span><h3>Computer Engineering</h3><p>Modern Education Society&apos;s Wadia College of Engineering, Pune</p><small>Savitribai Phule Pune University</small></div></article>
+          <article className="education-item reveal-item"><span className="education-years">2023</span><div><span className="education-type">HIGHER SECONDARY · SCIENCE (PCM)</span><h3>Kondiram Sadashiv Kshirsagar Junior College (Arts)</h3><p>Bhigwan, Maharashtra</p></div></article>
+        </div>
+        <div className="cert-list reveal-item"><div className="cert-heading"><span>COMPLETED COURSES</span><span>04</span></div>{certifications.map((item, index) => <a className="cert-item" key={item.title} href={item.href} target="_blank" rel="noreferrer" aria-label={`View certificate: ${item.title}`}><span>0{index + 1}</span><p>{item.title}</p><ArrowUpRight aria-hidden="true" /></a>)}</div>
+      </div>
+    </section>
+  )
+}
+
+function Contact() {
+  return (
+    <section className="contact section-space" id="contact">
+      <div className="page-wrap contact-inner">
+        <div className="contact-copy reveal-item"><p className="section-label"><span>06</span><i /> SAY HELLO</p><h2>Have a good<br />question? <em>Let&apos;s talk.</em></h2><p>I&apos;m open to conversations about data, practical AI, internships, and projects worth learning from.</p><a className="button button-primary" href={profile.email}>Write me an email <ArrowUpRight aria-hidden="true" /></a></div>
+        <div className="contact-links reveal-item"><a href="tel:+918446511746"><span>PHONE</span><b>+91 84465 11746</b><Phone aria-hidden="true" /></a><a href={profile.email}><span>EMAIL</span><b>udayzaware09@gmail.com</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.linkedin} target="_blank" rel="noreferrer"><span>LINKEDIN</span><b>Connect professionally</b><ArrowUpRight aria-hidden="true" /></a><a href={profile.github} target="_blank" rel="noreferrer"><span>GITHUB</span><b>See what I&apos;m building</b><ArrowUpRight aria-hidden="true" /></a><div className="contact-location"><span className="status-dot" /> PUNE, MAHARASHTRA, INDIA</div></div>
+      </div>
+    </section>
+  )
+}
+
+function Footer() {
+  return <footer className="site-footer page-wrap"><a className="brand" href="#home"><span className="brand-mark">uz<span>.</span></span><span className="brand-name">UDAYKUMAR Zaware</span></a><p>Built with curiosity in Pune, India.</p><a className="back-top" href="#home">BACK TO TOP <ArrowUpRight aria-hidden="true" /></a><small>© {new Date().getFullYear()} Udaykumar Zaware</small></footer>
+}
+
+export default function Portfolio() {
+  useEffect(() => {
+    const targets = document.querySelectorAll<HTMLElement>('.reveal-item')
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+    if (reducedMotion || !('IntersectionObserver' in window)) return
+
+    targets.forEach(target => target.classList.add('reveal-ready'))
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.12, rootMargin: '0px 0px -28px 0px' })
+
+    targets.forEach(target => observer.observe(target))
+    return () => observer.disconnect()
+  }, [])
+
+  useEffect(() => {
+    let frame = 0
+    function updateProgress() {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight
+        const progress = scrollable > 0 ? window.scrollY / scrollable : 0
+        document.documentElement.style.setProperty('--page-progress', `${progress * 100}%`)
+      })
+    }
+
+    window.addEventListener('scroll', updateProgress, { passive: true })
+    updateProgress()
+    return () => {
+      window.removeEventListener('scroll', updateProgress)
+      cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return <><Header /><main><Hero /><About /><Projects /><Experience /><Skills /><Education /><Contact /></main><Footer /></>
+}

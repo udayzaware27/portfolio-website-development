@@ -240,10 +240,9 @@ function Experience() {
         <div className="experience-main">
           <p className="experience-kicker">AI INTERNSHIP <span className="status-dot" /> PUNE, INDIA</p>
           <h3>AI Intern <span>at</span><br />AI Unika Technologies</h3>
-          <p className="experience-description">Building practical experience with computer vision workflows—from preparing image datasets to exploring detection and tracking tasks.</p>
-          <div className="experience-details"><span><Check aria-hidden="true" /> Image annotation & dataset preparation</span><span><Check aria-hidden="true" /> Object detection, masking & counting</span><span><Check aria-hidden="true" /> Python, YOLO & Roboflow</span></div>
+          <p className="experience-description">Training and testing computer vision models for real-world monitoring tasks. My work includes preparing and annotating image datasets, training detection models, and evaluating their results across PPE compliance, city monitoring, and road-defect monitoring use cases.</p>
+          <div className="experience-details"><span><Check aria-hidden="true" /> PPE detection: trained and tested safety-gear detection models</span><span><Check aria-hidden="true" /> City monitoring: developed models to detect and monitor urban scenes</span><span><Check aria-hidden="true" /> Road defects: trained and tested models to identify surface issues</span><span><Check aria-hidden="true" /> Dataset annotation, preparation & model evaluation with Python, YOLO and Roboflow</span></div>
         </div>
-        <span className="experience-index">FIELD<br />NOTE 01</span>
       </article>
     </section>
   )

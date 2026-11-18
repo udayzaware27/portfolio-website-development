@@ -187,7 +187,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-link svg, .all-projects-link svg { width: 14px; transition: transform .2s ease; }.project-link:hover svg, .all-projects-link:hover svg { transform: translate(3px, -3px); }
 .all-projects-link { margin-top: 25px; color: var(--foreground); }
 
-.experience-card { position: relative; display: grid; grid-template-columns: .25fr 1fr auto; gap: 34px; align-items: start; padding: clamp(25px, 5vw, 55px); background: var(--blue-soft); }
+.experience-card { position: relative; display: grid; grid-template-columns: .25fr 1fr; gap: 34px; align-items: start; padding: clamp(25px, 5vw, 55px); background: var(--blue-soft); }
 .experience-date { padding-top: 4px; color: var(--blue); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 9px; letter-spacing: .1em; white-space: nowrap; }
 .experience-date span { padding-inline: 5px; color: var(--accent); }
 .experience-kicker { margin: 0 0 18px; color: var(--blue); font-size: 8px; }
@@ -278,7 +278,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .about-grid { grid-template-columns: 1fr; gap: 38px; }
   .project-card { grid-template-columns: 1fr; gap: 24px; }.project-card:nth-child(even) .project-art, .project-card:nth-child(even) .project-copy { order: initial; }
   .project-art { min-height: clamp(250px, 64vw, 350px); }.project-copy h3 { margin-top: 17px; }
-  .experience-card { grid-template-columns: 1fr auto; gap: 22px; }.experience-date { grid-column: 1 / -1; }.experience-main { grid-column: 1; }.experience-index { grid-column: 2; grid-row: 2; }
+  .experience-card { grid-template-columns: 1fr; gap: 22px; }.experience-date, .experience-main { grid-column: 1; }
   .skill-grid { grid-template-columns: repeat(2, 1fr); }.skill-card { min-height: 180px; }.skill-card h3 { margin-top: 30px; }
   .education-grid { grid-template-columns: 1fr; gap: 34px; }
   .contact-inner { grid-template-columns: 1fr; gap: 40px; }

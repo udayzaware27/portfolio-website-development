@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState, type CSSProperties, type ReactNode } from 'react'
 import {
   ArrowDown,
@@ -65,29 +66,6 @@ function Header() {
   )
 }
 
-function SignalArtwork() {
-  return (
-    <div className="signal-art" aria-hidden="true">
-      <div className="art-caption"><span>FIELD NOTES / 01</span><span>PUNE · INDIA</span></div>
-      <div className="signal-grid">
-        <div className="signal-axis signal-axis-x" />
-        <div className="signal-axis signal-axis-y" />
-        <div className="signal-curve signal-curve-a" />
-        <div className="signal-curve signal-curve-b" />
-        <div className="signal-curve signal-curve-c" />
-        <span className="signal-point point-a" />
-        <span className="signal-point point-b" />
-        <span className="signal-point point-c" />
-        <span className="signal-coordinate coordinate-a">OBSERVE</span>
-        <span className="signal-coordinate coordinate-b">REFINE</span>
-        <span className="signal-coordinate coordinate-c">BUILD</span>
-        <div className="signal-center"><Braces aria-hidden="true" /><span>DATA → DECISIONS</span></div>
-      </div>
-      <div className="art-footer"><span>ANALYTICS</span><i /><span>APPLIED AI</span><i /><span>COMPUTER VISION</span></div>
-    </div>
-  )
-}
-
 function Hero() {
   return (
     <section className="hero page-wrap" id="home">
@@ -105,7 +83,19 @@ function Hero() {
           <span>01 <b>Analytics</b></span><span>02 <b>Applied AI</b></span><span>03 <b>Computer vision</b></span>
         </div>
       </div>
-      <div className="hero-visual-wrap"><SignalArtwork /></div>
+      <div className="hero-visual-wrap">
+        <div className="hero-image-frame">
+          <Image
+            src="/images/data-insights-hero.png"
+            alt="Sculptural cobalt glass forms visualizing data and insight"
+            fill
+            priority
+            sizes="(max-width: 800px) 90vw, 42vw"
+            className="hero-image"
+          />
+          <div className="hero-image-caption"><span>DATA → INSIGHT</span><span>ANALYTICS · APPLIED AI</span></div>
+        </div>
+      </div>
       <a className="hero-scroll" href="#about"><span>SCROLL TO EXPLORE</span><ArrowDown aria-hidden="true" /></a>
       <span className="hero-index">PORTFOLIO <b>·</b> 2026</span>
     </section>

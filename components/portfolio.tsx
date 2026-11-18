@@ -99,7 +99,7 @@ function Hero() {
           </div>
           <div className="code-card" aria-label="A snapshot of my work">
             <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
-            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  technologies: [<span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>]<br />{'}'}</code></pre>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  technologies: [<br />    <span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>,<br />    <span className="code-string">&quot;Excel&quot;</span>, <span className="code-string">&quot;YOLO&quot;</span>, <span className="code-string">&quot;Power Query&quot;</span><br />  ]<br />{'}'}</code></pre>
           </div>
           <div className="profile-links">
             <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>

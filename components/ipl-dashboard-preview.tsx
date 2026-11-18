@@ -31,7 +31,7 @@ export default function IplDashboardPreview() {
         <section className="ipl-panel ipl-team-panel">
           <h3>Matches won by teams</h3>
           <div className="ipl-column-chart">
-            {teamBars.map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
+            {teamBars.map((height, index) => <i key={index} style={{ height: `${height}%`, animationDelay: `${index * 35}ms` }} />)}
           </div>
           <span className="ipl-panel-axis">WINNER</span>
         </section>
@@ -39,10 +39,10 @@ export default function IplDashboardPreview() {
         <section className="ipl-panel">
           <h3>Top wicket takers</h3>
           <div className="ipl-leader-list">
-            {wicketTakers.map((player) => (
+            {wicketTakers.map((player, index) => (
               <div className="ipl-leader-row" key={player.name}>
                 <span>{player.name}</span>
-                <i><b style={{ width: `${player.value}%` }} /></i>
+                <i><b style={{ width: `${player.value}%`, animationDelay: `${index * 80}ms` }} /></i>
               </div>
             ))}
           </div>
@@ -68,10 +68,10 @@ export default function IplDashboardPreview() {
         <section className="ipl-panel">
           <h3>Top run scorers</h3>
           <div className="ipl-leader-list">
-            {runScorers.map((player) => (
+            {runScorers.map((player, index) => (
               <div className="ipl-leader-row" key={player.name}>
                 <span>{player.name}</span>
-                <i><b style={{ width: `${player.value}%` }} /></i>
+                <i><b style={{ width: `${player.value}%`, animationDelay: `${index * 80}ms` }} /></i>
               </div>
             ))}
           </div>
@@ -80,7 +80,7 @@ export default function IplDashboardPreview() {
         <section className="ipl-panel">
           <h3>Matches per season</h3>
           <div className="ipl-season-chart">
-            {seasonBars.map((height, index) => <i key={index} style={{ height: `${height}%` }} />)}
+            {seasonBars.map((height, index) => <i key={index} style={{ height: `${height}%`, animationDelay: `${index * 35}ms` }} />)}
           </div>
         </section>
 

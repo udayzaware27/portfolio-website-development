@@ -140,6 +140,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .project-card:hover .project-photo { transform: scale(1.04); }
 .project-art::after { position: absolute; z-index: 1; inset: 48% 0 0; background: linear-gradient(180deg, transparent, #090b10c9); content: ''; pointer-events: none; }
 .project-art-label { position: absolute; z-index: 2; bottom: 18px; left: 18px; padding: 8px 10px; border-left: 2px solid var(--accent); background: #090b10c9; color: var(--foreground); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; letter-spacing: .12em; }
+.project-art.project-art-ipl { min-height: 0; aspect-ratio: 1305 / 730; border-color: #d5dbe4; background: #f3f5f8; }
+.project-art-ipl::after { display: none; }
+.project-art-ipl .project-photo { object-fit: contain; padding: 8px; }
+.project-card:hover .project-art-ipl .project-photo { transform: none; }
 .project-copy { padding-block: 8px; }
 .project-meta { justify-content: space-between; color: var(--muted); font-family: 'SFMono-Regular', Consolas, monospace; font-size: 8px; }
 .project-meta span:first-child { color: var(--accent-deep); }

@@ -183,10 +183,13 @@ const projects = [
   },
 ]
 
-const projectVisuals: Record<string, { src: string; label: string }> = {
+const projectVisuals: Record<string, { src: string; label?: string; alt?: string }> = {
   sales: { src: '/project-images/sales-analytics.png', label: 'EXCEL · SALES ANALYTICS' },
   database: { src: '/project-images/bookstore-sql.png', label: 'POSTGRESQL · BOOKSTORE' },
-  ipl: { src: '/project-images/cricket-dashboard.png', label: 'POWER BI · CRICKET DATA' },
+  ipl: {
+    src: '/project-images/ipl-dashboard.png',
+    alt: 'Power BI IPL dashboard showing team wins, top wicket takers, season filters, match and run totals, top scorers, matches per season, and toss decisions.',
+  },
   vision: { src: '/project-images/vision-fitness.png', label: 'POSE TRACKING · YOLO-POSE' },
 }
 
@@ -194,9 +197,9 @@ function ProjectArtwork({ type }: { type: string }) {
   const visual = projectVisuals[type]
 
   return (
-    <div className="project-art" aria-hidden="true">
-      <Image src={visual.src} alt="" fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
-      <span className="project-art-label">{visual.label}</span>
+    <div className={`project-art project-art-${type}`}>
+      <Image src={visual.src} alt={visual.alt ?? ''} fill sizes="(max-width: 760px) 100vw, 50vw" className="project-photo" />
+      {visual.label && <span className="project-art-label" aria-hidden="true">{visual.label}</span>}
     </div>
   )
 }

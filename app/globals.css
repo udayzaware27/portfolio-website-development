@@ -363,3 +363,9 @@ body { font-size: 16px; background-image: radial-gradient(ellipse at 18% 8%, #20
 @keyframes label-line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes node-float { from { transform: translateY(0); } to { transform: translateY(-7px); } }
 @keyframes target-lock { from { transform: scale(.97); opacity: .72; } to { transform: scale(1.035); opacity: 1; } }
+
+:root { --muted: #c0c7d2; }
+@media (prefers-reduced-motion: no-preference) {
+  .hero-copy > *, .hero-visual-wrap, .site-header { animation-name: hero-rise; }
+}
+@keyframes hero-rise { from { transform: translateY(14px); } to { transform: translateY(0); } }

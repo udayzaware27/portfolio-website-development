@@ -78,7 +78,7 @@ function Hero() {
       <div className="hero-copy">
         <p className="eyebrow"><span className="eyebrow-mark" /> COMPUTER ENGINEERING STUDENT</p>
         <h1>Hi, I&apos;m<br /><em>Udaykumar</em><br /><em>Zaware.</em></h1>
-        <h2 className="hero-role">Data Analytics <span>·</span> Computer Vision</h2>
+        <h2 className="hero-role">Data Analytics <span>·</span> AI-Computer Vision</h2>
         <p className="hero-intro">
           I turn raw data into useful insights, build clear dashboards, and develop hands-on experience with computer vision.
         </p>
@@ -99,7 +99,7 @@ function Hero() {
           </div>
           <div className="code-card" aria-label="A snapshot of my work">
             <div className="code-titlebar"><span className="window-dots"><i /><i /><i /></span><span>about-me.js</span><span className="code-titlebar-note">A QUICK INTRO</span></div>
-            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  technologies: [<br />    <span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>,<br />    <span className="code-string">&quot;Excel&quot;</span>, <span className="code-string">&quot;YOLO&quot;</span>, <span className="code-string">&quot;Power Query&quot;</span><br />  ]<br />{'}'}</code></pre>
+            <pre><code><span className="code-keyword">const</span> profile = {'{'}<br />  name: <span className="code-string">&quot;Udaykumar Zaware&quot;</span>,<br />  location: <span className="code-string">&quot;Pune, India&quot;</span>,<br />  technologies: [<br />    <span className="code-string">&quot;SQL&quot;</span>, <span className="code-string">&quot;Power BI&quot;</span>, <span className="code-string">&quot;Python&quot;</span>,<br />    <span className="code-string">&quot;Excel&quot;</span>, <span className="code-string">&quot;YOLO&quot;</span>, <span className="code-string">&quot;Power Query&quot;</span><br />  ]<br />{'}'}</code></pre>
           </div>
           <div className="profile-links">
             <a href={profile.github} target="_blank" rel="noreferrer"><span>GitHub</span><ArrowUpRight aria-hidden="true" /></a>

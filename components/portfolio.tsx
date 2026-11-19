@@ -301,17 +301,59 @@ function Education() {
 }
 
 function Contact() {
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  const [isSending, setIsSending] = useState(false)
+  const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; message: string } | null>(null)
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    const formData = new FormData(event.currentTarget)
+    if (isSending) return
+
+    const form = event.currentTarget
+    const formData = new FormData(form)
     const name = String(formData.get('name') ?? '').trim()
     const email = String(formData.get('email') ?? '').trim()
     const phone = String(formData.get('phone') ?? '').trim()
     const message = String(formData.get('message') ?? '').trim()
-    const subject = `Portfolio inquiry from ${name}`
-    const body = `Name: ${name}\nEmail: ${email}${phone ? `\nPhone: ${phone}` : ''}\n\n${message}`
 
-    window.location.href = `${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
+    if (!name || !email || !message) {
+      setFeedback({ type: 'error', message: 'Please complete the required fields.' })
+      return
+    }
+
+    setIsSending(true)
+    setFeedback(null)
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          website: String(formData.get('website') ?? ''),
+        }),
+      })
+      const result = await response.json().catch(() => null) as { success?: unknown; error?: unknown } | null
+
+      if (!response.ok || result?.success !== true) {
+        throw new Error(typeof result?.error === 'string' ? result.error : 'We could not send your message. Please try again.')
+      }
+
+      form.reset()
+      setFeedback({
+        type: 'success',
+        message: "Thank you for reaching out! Your message has been sent successfully. I'll get back to you soon.",
+      })
+    } catch (error) {
+      setFeedback({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'We could not send your message. Please try again.',
+      })
+    } finally {
+      setIsSending(false)
+    }
   }
 
   return (
@@ -353,7 +395,12 @@ function Contact() {
           </aside>
         </div>
 
-        <form className="contact-form reveal-item" onSubmit={handleSubmit}>
+        <form className="contact-form reveal-item" onSubmit={handleSubmit} aria-busy={isSending}>
+          <div className="contact-honeypot" aria-hidden="true">
+            <label htmlFor="contact-website">Leave this field blank
+              <input id="contact-website" name="website" type="text" autoComplete="off" tabIndex={-1} />
+            </label>
+          </div>
           <div className="contact-form-heading">
             <h3>Send a message</h3>
             <p>Share your idea, timeline, and goals.</p>
@@ -374,8 +421,17 @@ function Contact() {
             </label>
           </div>
           <div className="contact-form-actions">
-            <button className="button button-primary" type="submit">Send message <Send aria-hidden="true" /></button>
-            <p>This opens your email app with the message ready to send.</p>
+            <button className="button button-primary" type="submit" disabled={isSending}>
+              {isSending ? 'Sending...' : 'Send message'} <Send aria-hidden="true" />
+            </button>
+            <p
+              className={feedback ? `contact-form-feedback is-${feedback.type}` : 'contact-form-feedback'}
+              role={feedback?.type === 'error' ? 'alert' : feedback ? 'status' : undefined}
+              aria-live={feedback ? 'polite' : undefined}
+              aria-atomic="true"
+            >
+              {feedback?.message ?? 'Your message will be sent securely.'}
+            </p>
           </div>
         </form>
       </div>

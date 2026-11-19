@@ -1,3 +1,4 @@
+import { isIP } from 'node:net'
 import { Resend } from 'resend'
 
 export const runtime = 'nodejs'
@@ -7,6 +8,62 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
 const RATE_LIMIT_MAX_REQUESTS = 5
 
 const submissionsByIp = new Map<string, { count: number; resetAt: number }>()
+
+function isPublicIpAddress(ip: string) {
+  const version = isIP(ip)
+
+  if (version === 4) {
+    const [first, second, third] = ip.split('.').map(Number)
+    return !(
+      first === 0 || first === 10 || first === 127 || first >= 224 ||
+      (first === 100 && second >= 64 && second <= 127) ||
+      (first === 169 && second === 254) ||
+      (first === 172 && second >= 16 && second <= 31) ||
+      (first === 192 && (second === 168 || (second === 0 && (third === 0 || third === 2)))) ||
+      (first === 198 && (second === 18 || second === 19 || (second === 51 && third === 100))) ||
+      (first === 203 && second === 0 && third === 113)
+    )
+  }
+
+  if (version === 6) {
+    const normalized = ip.toLowerCase()
+    return normalized.startsWith('2') || normalized.startsWith('3')
+  }
+
+  return false
+}
+
+function getTrustedClientIp(request: Request) {
+  // Vercel sets this platform header; generic forwarded headers can be supplied by the caller.
+  const platformForwardedFor = request.headers.get('x-vercel-forwarded-for')
+  const clientIp = platformForwardedFor?.split(',')[0]?.trim()
+  return clientIp && isPublicIpAddress(clientIp) ? clientIp : null
+}
+
+async function getVisitorLocation(ip: string | null) {
+  if (!ip) return 'Location unavailable'
+
+  try {
+    const response = await fetch(`https://ipapi.co/${encodeURIComponent(ip)}/json/`, {
+      headers: { Accept: 'application/json' },
+      cache: 'no-store',
+      signal: AbortSignal.timeout(2500),
+    })
+    if (!response.ok) return 'Location unavailable'
+
+    const data: unknown = await response.json()
+    if (!data || typeof data !== 'object') return 'Location unavailable'
+
+    const result = data as Record<string, unknown>
+    const parts = [result.city, result.region, result.country_name]
+      .map((part) => typeof part === 'string' ? part.trim() : '')
+      .filter(Boolean)
+
+    return parts.length ? parts.join(', ') : 'Location unavailable'
+  } catch {
+    return 'Location unavailable'
+  }
+}
 
 function escapeHtml(value: string) {
   return value.replace(/[&<>"']/g, (character) => {
@@ -81,10 +138,8 @@ export async function POST(request: Request) {
   if (!message || message.length > 5000) return jsonError('Enter a message of 1 to 5000 characters.', 400)
 
   const now = Date.now()
-  const ip = (request.headers.get('x-forwarded-for') ?? request.headers.get('x-real-ip') ?? 'unknown')
-    .split(',')[0]
-    .trim() || 'unknown'
-  const retryAfter = getRetryAfter(ip, now)
+  const clientIp = getTrustedClientIp(request)
+  const retryAfter = getRetryAfter(clientIp ?? 'unknown', now)
 
   if (retryAfter) {
     return jsonError('Too many messages. Please try again in a few minutes.', 429, { 'Retry-After': String(retryAfter) })
@@ -98,26 +153,29 @@ export async function POST(request: Request) {
     return jsonError('Email delivery is not configured. Please try again later.', 503)
   }
 
+  const location = await getVisitorLocation(clientIp)
   const submittedAt = new Date(now).toISOString()
   const safeName = name.replace(/[\r\n]+/g, ' ').trim()
+  const safePhone = phone.replace(/[\r\n]+/g, ' ').trim() || 'Not provided'
   const safeMessage = escapeHtml(message).replace(/\r\n|\r|\n/g, '<br />')
   const html = `
     <h1>New Portfolio Enquiry</h1>
-    <p><strong>Visitor name:</strong> ${escapeHtml(safeName)}</p>
-    <p><strong>Visitor email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Phone number:</strong> ${escapeHtml(phone || 'Not provided')}</p>
+    <p><strong>Visitor Name:</strong> ${escapeHtml(safeName)}</p>
+    <p><strong>Visitor Email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Phone Number:</strong> ${escapeHtml(safePhone)}</p>
+    <p><strong>Visitor Location:</strong> ${escapeHtml(location)}</p>
     <p><strong>Message:</strong></p>
     <p>${safeMessage}</p>
-    <p><strong>Submission timestamp (UTC):</strong> ${submittedAt}</p>
+    <p><strong>Submission Timestamp:</strong> ${submittedAt}</p>
   `
   const text = [
     'New Portfolio Enquiry',
-    `Visitor name: ${safeName}`,
-    `Visitor email: ${email}`,
-    `Phone number: ${phone || 'Not provided'}`,
-    'Message:',
-    message,
-    `Submission timestamp (UTC): ${submittedAt}`,
+    `Visitor Name: ${safeName}`,
+    `Visitor Email: ${email}`,
+    `Phone Number: ${safePhone}`,
+    `Visitor Location: ${location}`,
+    `Message:\n${message}`,
+    `Submission Timestamp: ${submittedAt}`,
   ].join('\n\n')
 
   try {

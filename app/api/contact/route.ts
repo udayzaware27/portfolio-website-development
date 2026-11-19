@@ -160,22 +160,23 @@ export async function POST(request: Request) {
   const safeMessage = escapeHtml(message).replace(/\r\n|\r|\n/g, '<br />')
   const html = `
     <h1>New Portfolio Enquiry</h1>
-    <p><strong>Visitor Name:</strong> ${escapeHtml(safeName)}</p>
-    <p><strong>Visitor Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Phone Number:</strong> ${escapeHtml(safePhone)}</p>
-    <p><strong>Visitor Location:</strong> ${escapeHtml(location)}</p>
+    <p><strong>Visitor name:</strong> ${escapeHtml(safeName)}</p>
+    <p><strong>Visitor email:</strong> ${escapeHtml(email)}</p>
+    <p><strong>Phone number:</strong> ${escapeHtml(safePhone)}</p>
+    <p><strong>Visitor location:</strong> ${escapeHtml(location)}</p>
     <p><strong>Message:</strong></p>
     <p>${safeMessage}</p>
-    <p><strong>Submission Timestamp:</strong> ${submittedAt}</p>
+    <p><strong>Submission timestamp (UTC):</strong> ${submittedAt}</p>
   `
   const text = [
     'New Portfolio Enquiry',
-    `Visitor Name: ${safeName}`,
-    `Visitor Email: ${email}`,
-    `Phone Number: ${safePhone}`,
-    `Visitor Location: ${location}`,
-    `Message:\n${message}`,
-    `Submission Timestamp: ${submittedAt}`,
+    `Visitor name: ${safeName}`,
+    `Visitor email: ${email}`,
+    `Phone number: ${safePhone}`,
+    `Visitor location: ${location}`,
+    'Message:',
+    message,
+    `Submission timestamp (UTC): ${submittedAt}`,
   ].join('\n\n')
 
   try {
